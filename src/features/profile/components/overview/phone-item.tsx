@@ -42,7 +42,7 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
         </IntroItemLink>
         {isClient && isDubaiNumber && (
           <span className="text-muted-foreground" aria-hidden="true">
-            {" // Dubai, UAE"}
+            {" // Burkina Faso"}
           </span>
         )}
       </IntroItemContent>
