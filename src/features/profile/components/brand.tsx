@@ -13,7 +13,7 @@ export function Brand() {
   return (
     <Panel>
       <PanelHeader>
-        <PanelTitle>Brand</PanelTitle>
+        <PanelTitle>Marque</PanelTitle>
       </PanelHeader>
 
       <BrandContextMenu>

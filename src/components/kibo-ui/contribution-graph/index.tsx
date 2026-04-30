@@ -69,8 +69,8 @@ const DEFAULT_LABELS: Labels = {
   weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
   totalCount: "{{count}} activities in {{year}}",
   legend: {
-    less: "Less",
-    more: "More",
+    less: "Moins",
+    more: "Plus",
   },
 };
 

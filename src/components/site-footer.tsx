@@ -9,29 +9,7 @@ export function SiteFooter() {
     <footer className="max-w-screen overflow-x-hidden px-2">
       <div className="screen-line-before mx-auto border-x border-edge pt-4 md:max-w-3xl">
         <p className="mb-1 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-          Inspired by tailwindcss.com & ui.shadcn.com
-        </p>
-
-        <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-          Built by a {""}
-          {/* <a
-            className="link"
-            href="https://www.linkedin.com/in/abdulrehmanwaseem"
-            target="_blank"
-            rel="noopener"
-          >
-            abdul rehman
-          </a> */}
-          human. The source code is available on{" "}
-          <a
-            className="link"
-            href={SOURCE_CODE_GITHUB_URL}
-            target="_blank"
-            rel="noopener"
-          >
-            GitHub
-          </a>
-          .
+          Copyright &copy; {new Date().getFullYear()} {SITE_INFO.name}. All rights
         </p>
 
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
