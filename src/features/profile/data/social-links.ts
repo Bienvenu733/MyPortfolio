@@ -34,9 +34,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: "https://discord.com/users/1306718538651795499",
   },
   {
-    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g fill="none" fill-rule="evenodd"><rect width="40" height="40" fill="%23FF6154"/><path fill="%23FFF" d="M22.667 20H17v-6h5.667a3 3 0 0 1 0 6m0-10H13v20h4v-6h5.667a7 7 0 1 0 0-14"/></g></svg>',
-    title: "Product Hunt",
-    description: "@abdulrehmanwaseem",
-    href: "https://www.producthunt.com/@abdulrehmanwaseem",
+    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g fill="none" fill-rule="evenodd"><rect width="40" height="40" fill="%231877F2"/><path fill="%23FFF" d="M22 20h3l1-4h-4v-2c0-1 .5-2 2-2h2v-4h-3c-3.4 0-5 2.1-5 5v3h-3v4h3v10h4V20z"/></g></svg>',
+    title: "Facebook",
+    description: "@Moïse Bienvenu Ouedraogo",
+    href: "https://www.facebook.com/moise.bienvenu.ouedraogo",
   },
 ];
