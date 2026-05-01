@@ -71,14 +71,7 @@ const MENU_LINKS: CommandLinkItem[] = [
   },
 ];
 
-const PRODUCT_LINKS: CommandLinkItem[] = [
-  {
-    title: "ShopFlow",
-    href: "/products/shopflow",
-    icon: Icons.react,
-    keywords: ["shop", "management", "pos", "pern", "inventory"],
-  },
-];
+const PRODUCT_LINKS: CommandLinkItem[] = [];
 
 const PORTFOLIO_LINKS: CommandLinkItem[] = [
   {
