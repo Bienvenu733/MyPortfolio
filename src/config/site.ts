@@ -23,11 +23,7 @@ export const MAIN_NAV: NavItem[] = [
     title: "Blog",
     href: "/blog",
   },
-  {
-    title: "Products",
-    href: "/products/shopflow",
-  },
-  // {
+    // {
   //   title: "Components",
   //   href: "/components",
   // },

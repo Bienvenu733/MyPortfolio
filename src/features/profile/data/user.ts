@@ -27,11 +27,6 @@ export const USER: User = {
       company: "Dokal Technologies",
       website: "https://dokal.com",
     },
-    {
-      title: "Créateur de",
-      company: "ShopFlow",
-      website: "/products/shopflow",
-    },
   ],
   about: `
 - **Développeur Fullstack** avec **2+ ans d'expériences**. Reconnu pour mon architecture propre et mon souci du détail.
