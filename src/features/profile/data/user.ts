@@ -15,17 +15,17 @@ export const USER: User = {
     "Développeur d'applications de bureau (Desktop)",
   ],
   address: "Ouagadougou, Burkina Faso",
-  phoneNumber: "KzkyMzExODExNDgwNQ==", // E.164 format, base64 encoded (https://t.io.vn/
-  secondPhoneNumber: "Kzk3MSA1NSA1NjMgMzI4OQ==",
+  phoneNumber: "KzIyNiA3NSAzMSA4OSA2Mg==", // E.164 format, base64 encoded (https://t.io.vn/
+  secondPhoneNumber: "KzIyNiA2MCAwNyAxMCA3Ng==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   // base64-string-converter)
-  email: "Y29udGFjdEBhYmR1bHJlaG1hbndhc2VlbS5tZQ==", // base64 encoded
-  website: "https://abdulrehmanwaseem.me",
+  email: "bW9pc2ViaWVudmVudTczM0BnbWFpbC5jb20=", // base64 encoded
+  website: "https://moisebienvenu.me",
   jobTitle: "Fullstack Developer",
   jobs: [
     {
       title: "Développeur Fullstack Web, Mobile et Desktop",
       company: "Dokal Technologies",
-      website: "https://forrof.io?ref=IN-926722",
+      website: "https://dokal.com",
     },
     {
       title: "Créateur de",
