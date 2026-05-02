@@ -3,75 +3,138 @@ import type { Experience } from "../types/experiences";
 export const EXPERIENCES: Experience[] = [
   {
     id: "forrof",
-    companyName: "Forrof.io",
+    companyName: "Moïse Bienvenu Wendpanga OUEDRAOGO",
     companyLogo: "/images/experience/forrof.svg",
     positions: [
       {
-        id: "forrof-fullstack-dev",
-        title: "Senior Fullstack Developer",
+        id: "Dokal-fullstack-dev",
+        title: "Développeur Fullstack, UI/UX Designer",
         employmentPeriod: {
-          start: "07.2025",
+          start: "03.2026",
         },
         employmentType: "Full-time",
         icon: "code",
-        description: `- Develop scalable SaaS applications using modern web technologies.
-- Build cross-platform applications with React Native and Electron.
-- Architect and develop full-stack solutions with the MERN stack.
-- Design and implement RESTful APIs with Node.js, Express.js and NestJS
-- Build responsive, performant frontend applications with Next.js and React.
-- Integrate third-party APIs and real-time features using WebSockets.
-- Collaborate with cross-functional teams in a remote environment.
-- Optimize application performance and ensure code quality.`,
+        description: `- **Conception et développement** d'une application mobile de gestion avec Expo (React Native), couvrant l'authentification, la navigation, la gestion de données métier et l'expérience utilisateur ;
+- **Design UI/UX complet** : création de maquettes haute fidélité, prototypage interactif et mise en place d'un design system cohérent pour garantir une adoption fluide par les équipes terrain ;
+- **Intégration d'APIs et synchronisation** : connexion aux backends existants via des endpoints REST, gestion du cache local et optimisation des performances en conditions réseau dégradées ;
+- **Optimisation mobile** : adaptation responsive multi-écrans, gestion d'états complexes et réduction des temps de chargement pour une navigation fluide et intuitive ;
+- **Qualité et déploiement** : itérations agiles, revues de code, tests sur devices physiques et mise en production via les canaux internes (TestFlight / Google Play Internal Testing) ;
+- **Suivi et amélioration continue** : collecte de retours utilisateurs, analyse des parcours critiques et itérations rapides pour augmenter l'efficacité opérationnelle et la rétention.`,
         skills: [
-          "MERN Stack",
-          "React.js",
           "React Native",
-          "Next.js",
-          "NestJS",
-          "Electron",
+          "Expo",
           "TypeScript",
-          "MongoDB",
-          "Express.js",
-          "PostgreSQL",
+          "JavaScript",
+          "UI/UX Design",
+          "Figma",
+          "Prototypage interactif",
+          "Design System",
           "RESTful APIs",
-          "SaaS Development",
+          "State Management (Redux/Zustand)",
+          "React Query",
+          "Mobile App Deployment",
+          "Git & GitHub",
+          "Postman",
           "Remote Work",
           "Problem-solving",
         ],
         isExpanded: true,
       },
       {
-        id: "forrof-3d-specialist",
-        title: "3D Web Specialist",
+        id: "dokal-stagiaire-dev",
+        title: "Développeur Stagiaire à Dokal Burkina",
         employmentPeriod: {
           start: "07.2025",
+          end: "12.2025",
         },
-        employmentType: "Full-time",
+        employmentType: "Temps plein",
         icon: "code",
-        description: `
-- Implement immersive 3D web experiences using Three.js and WebGL.
-- Optimize 3D rendering performance for smooth user experiences.
-- Develop custom shaders and materials for advanced visual effects.
-- Integrate 3D models and assets from Blender and other design tools.
-- Build responsive 3D interfaces that work across devices.
-- Implement physics simulations and interactive 3D controls.`,
+        description: `- **Développement et déploiement** de bot WhatsApp automatisé couvrant le cycle complet de commande (catalogue → panier → paiement → suivi) ;
+- **Conception full-stack** d'interfaces et backends (Node.js/Express, Next.js, PostgreSQL/MongoDB) intégrés à l'API WhatsApp Business Cloud ;
+- **Modélisation de flux conversationnels** UX-first : menus interactifs, boutons, listes et gestion proactive des erreurs ou abandons ;
+- **Intégration d'écosystèmes métier** via APIs REST et webhooks : synchronisation des stocks, passerelles de paiement et notifications temps réel ;
+- **Industrialisation du code** avec pipelines CI/CD, tests automatisés et monitoring pour garantir fiabilité, scalabilité et maintenabilité ;
+- **Sécurité et conformité** : gestion des consentements, validation des templates Meta, chiffrement des données sensibles et respect du RGPD ;
+- **Suivi analytique** : implémentation de dashboards pour mesurer taux de conversion, temps de réponse et identifier les points d'optimisation .`,
         skills: [
-          "Three.js",
-          "WebGL",
-          "Rapier Physics Engine",
-          "3D Web Development",
-          "React Three Fiber",
-          "GLSL Shaders",
-          "Blender",
-          "3D Modeling",
-          "Performance Optimization",
-          "Interactive Design",
+          "React.js",
+          "Next.js",
+          "NestJS",
+          "TypeScript",
+          "Express.js",
+          "JavaScript",
+          "PostgreSQL",
+          "Redis",
+          "RESTful APIs",
+          "WhatsApp Business API",
+          "Postman",
+          "Remote Work",
+          "Problem-solving",
+
+        ],
+        isExpanded: true,
+      },
+      {
+        id: "CDEJ-BF0469",
+        title: "Formateur en piano, Encadreur d'enfants au CDEJ-BF0469",
+        employmentPeriod: {
+          start: "04.2024",
+          end: "06.2025",
+        },
+        employmentType: "Temps partiel",
+        icon: "education",
+        description: `
+  - Enseignement  des bases musicales ;
+  - Adaptation des méthodes pédagogiques ;
+  - Evaluation des progrès ; 
+  - Inspiration et motivation ; 
+  - Création d'un environnement d'apprentissage positif ; 
+  - Assurer la sécurité des enfants ; 
+  - Planifier et organiser des activités adaptées ; 
+  - Superviser et encadrer les enfants ; 
+  - Encourager le développement social et émotionnel.`,
+        skills: [
+          "Pédagogie",
+          "Adaptabilité",
+          "Communication",
+          "Patience",
+          "Organisation",
+          "Encadrement",
+        ],
+      },
+      {
+        id: "CDEJ-BF0648",
+        title: "Formateur en piano, Encadreur d'enfants au CDEJ-BF0648",
+        employmentPeriod: {
+          start: "03.2022",
+          end: "10.2023",
+        },
+        employmentType: "Temps partiel",
+        icon: "education",
+        description: `
+  - Enseignement  des bases musicales ;
+  - Adaptation des méthodes pédagogiques ;
+  - Evaluation des progrès ; 
+  - Inspiration et motivation ; 
+  - Création d'un environnement d'apprentissage positif ; 
+  - Assurer la sécurité des enfants ; 
+  - Planifier et organiser des activités adaptées ; 
+  - Superviser et encadrer les enfants ; 
+  - Encourager le développement social et émotionnel.`,
+        skills: [
+          "Pédagogie",
+          "Adaptabilité",
+          "Communication",
+          "Patience",
+          "Organisation",
+          "Encadrement",
         ],
       },
     ],
     isCurrentEmployer: true,
     theme: true,
   },
+  /*
   {
     id: "pos-software-developer",
     companyName: "Self-Employed",
@@ -86,7 +149,7 @@ export const EXPERIENCES: Experience[] = [
           end: "04.2024",
         },
         employmentType: "Self-Employed",
-        icon: "code",
+        icon: "education",
         description: `- Built comprehensive Shop Management System using PERN stack (PostgreSQL, Express, React, Node.js).
 - Developed complete invoice management system with financial transaction logging.
 - Created real-time dashboards for sales analytics and inventory tracking.
@@ -111,7 +174,8 @@ export const EXPERIENCES: Experience[] = [
       },
     ],
   },
-  {
+  */
+  /*{
     id: "web-dev-instructor",
     companyName: "Frontend Development Course",
     companyLogo:
@@ -143,38 +207,7 @@ export const EXPERIENCES: Experience[] = [
         ],
       },
     ],
-  },
-  {
-    id: "ezone-academy",
-    companyName: "E.Zone Academy",
-    companyLogo:
-      "https://ui-avatars.com/api/?name=E.Zone+Academy&background=4F46E5&color=fff&size=200",
-    positions: [
-      {
-        id: "ezone-freelancing-trainer",
-        title: "Freelancing & IT Skills Trainer",
-        employmentPeriod: {
-          start: "03.2025",
-          end: "06.2025",
-        },
-        employmentType: "Part-time",
-        icon: "education",
-        description: `- Conducted in-person workshops and training on how to start and grow a freelancing career.
-- Taught students how to build freelance profiles on platforms like Upwork and Fiverr.
-- Trained students on writing winning proposals and managing client relationships effectively.
-- Provided hands-on guidance on freelancing best practices and career development.`,
-        skills: [
-          "Training & Mentoring",
-          "Freelancing",
-          "Upwork",
-          "Fiverr",
-          "Client Management",
-          "Communication Skills",
-          "Career Coaching",
-        ],
-      },
-    ],
-  },
+  },*/
 
   {
     id: "freelance",
@@ -184,77 +217,53 @@ export const EXPERIENCES: Experience[] = [
         id: "f0becfba-057d-40db-b252-739e1654faa1",
         title: "Full-stack Developer",
         employmentPeriod: {
-          start: "2025",
+          start: "",
         },
-        employmentType: "Part-time",
-        description: `**Key Projects:**
-
-- **[Fynosign](https://fynosign.com)** - Built complete e-signature SaaS platform with PDF signing workflows (pdf-lib), Stripe subscriptions, OAuth, Gemini AI insights, and audit trails. Deployed on AWS EC2.
-
-- **[LoopIQ](https://www.loopiq.xyz)** - Developed healthcare management platform frontend with React, Redux Toolkit, and RTK Query. Integrated FastAPI backend for patient workflows and SLA tracking.
-
-- **[RallyTyper](https://rallytyper.com)** - Resolved unclear deployment setup, built admin dashboard with blog CMS, retrieved MySQL credentials from WordPress config, and optimized React build.
-
-- **[Khrimisay](https://dev.khrimisay.com)** - Fixed critical PWA cookie persistence causing mobile logouts. Resolved RTK Query caching issues, authentication bugs (OTP, navigation), and UI/UX problems.
-
-- **[Space Facts Explorer](https://apps.apple.com/us/app/space-facts-explorer/id6749238944)** - Extracted app from Rork.ai and rebuilt as Expo React Native project. Managed complete App Store deployment, designed assets with Figma/Canva, overcame rejections.
-
-- **[Zas Dashboard](https://zas-dashboard-v12n.vercel.app)** - Built employment analytics platform consuming Spanish labor APIs (100k+ rows). Transformed Spanish variables to English, built interactive stats with filters.
-
-- **[Precision](/internal-project)** - Rebuilt CSV/Excel module for real estate platform (MERN). Implemented flexible parsing, validation, and error reporting for complex industry datasets.
-
-- **[Lead Smart](/internal-project)** - Integrated backend APIs into React TypeScript frontend. Rebuilt dashboard UI with real-time metrics, cleaned codebase, unified styling.`,
+        employmentType: "Temps Partiel",
+        description: `Conception et développement de solutions web, mobiles et d'automatisation pour des clients variés. Architecture full-stack (Next.js, Node.js/NestJS, PostgreSQL/MongoDB), création d'interfaces UI/UX (Figma) et déploiement d'applications Expo. Intégration d'écosystèmes métier via APIs REST, webhooks et WhatsApp Business API. Gestion complète du cycle projet : cadrage, développement, tests, déploiement et maintenance. Livraison de produits performants, sécurisés et orientés résultats.`,
         icon: "code",
         skills: [
-          "React",
-          "React Native",
-          "Redux Toolkit",
-          "TypeScript",
+          "React.js",
+          "Next.js",
           "Node.js",
+          "Express.js",
           "NestJS",
-          "FastAPI",
-          "MongoDB",
-          "PostgreSQL",
-          "AWS EC2",
-          "Stripe",
-          "OAuth",
+          "TypeScript",
+          "React Native",
           "Expo",
-          "pdf-lib",
-          "API Integration",
+          "UI/UX Design",
+          "Figma",
+          "Webflow",
+          "RESTful APIs",
+          "WhatsApp Business API",
+          "PostgreSQL",
+          "MongoDB",
+          "Git & GitHub",
+          "CI/CD",
+          "Problem-solving",
         ],
         isExpanded: true,
       },
       {
         id: "0eecdfcb-028d-41f4-93e9-1269ba7eff7e",
-        title: "UI/UX & 3D Engineer",
+        title: "UI/UX Designer",
         employmentPeriod: {
-          start: "2024",
+          start: "",
         },
-        employmentType: "Part-time",
-        description: `**Key Projects:**
-
-- **[Oil Refinery Platform](https://oil-refinery.vercel.app)** - Built interactive 3D visualization with React Three Fiber and Three.js. Implemented realistic lighting, water physics, and real-time monitoring concepts.
-
-- **[Fitreps](https://www.fitreps.com)** - Redesigned subscription UI/UX with custom CSS on legacy Material UI (no Tailwind). Built modals and drawers. Developed dark mode from scratch.
-
-- **[Truer EHR Dashboard](https://ehr-dashboard-nine.vercel.app)** - Built EHR dashboard UI with OAuth authentication (Google + Supabase). Implemented patient CRUD, dashboard stats, and API integration.
-
-- **[Stall Bedding Calculator](https://bedding-calculator.netlify.app)** - Built responsive calculator with pure HTML/CSS/JS. Replicated AI design, made fully responsive, implemented volume calculations with store-specific pricing.
-
-- **[EdTech Platform](/internal-project)** - Designed multi-step auth UI with AWS Cognito. Refactored flow replacing prop drilling with Redux Toolkit for clean parent/child registration data management.`,
+        employmentType: "Temps Partiel",
+        description: ` - Conception d'interfaces utilisateur intuitives et esthétiques pour des applications web et mobiles.
+- Création de maquettes haute fidélité et de prototypes interactifs avec Figma pour valider les concepts de design.
+- Développement de design systems cohérents pour assurer une expérience utilisateur fluide et une adoption rapide par les équipes de développement.
+- Collaboration étroite avec les clients pour comprendre leurs besoins métier et traduire ces exigences en solutions de design efficaces.
+- Application des meilleures pratiques de design UX pour optimiser la navigation, l'accessibilité et l'engagement des utilisateurs.`,
         icon: "design",
         skills: [
-          "Three.js",
-          "React Three Fiber",
           "UI/UX Design",
           "Figma",
+          "Adobe XD",
+          "Prototypage interactif",
           "Material UI",
-          "Custom CSS",
-          "Dark Mode Design",
           "Responsive Design",
-          "Redux Toolkit",
-          "AWS Cognito",
-          "Supabase",
         ],
       },
     ],
