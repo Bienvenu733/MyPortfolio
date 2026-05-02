@@ -13,6 +13,7 @@ export const USER: User = {
     "Développeur Fullstack Web",
     "Développeur d'applications mobiles",
     "Développeur d'applications de bureau (Desktop)",
+    "Freelance",
   ],
   address: "Ouagadougou, Burkina Faso",
   phoneNumber: "KzIyNiA3NSAzMSA4OSA2Mg==", // E.164 format, base64 encoded (https://t.io.vn/
