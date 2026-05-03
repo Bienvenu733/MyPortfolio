@@ -2,27 +2,95 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
-    id: "shop-management-system",
-    title: "Shop Management System",
-    period: { start: "12.2023" },
-    link: "https://github.com/abdulrehmanwaseem/Shop-Management-System",
+    id: "Portfolio1",
+    title: "Portfolio Personnel avec Django (Python)",
+    period: { start: "2025" },
+    link: "",
     skills: [
-      "React",
-      "Redux Toolkit",
-      "Handsontable",
-      "Express.js",
-      "PostgreSQL",
+      "Python",
+      "Django",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Bootstrap",
     ],
     isExpanded: true,
 
-    description: `A complete shop management system built using the PERN stack.  
-- Authentication and invoice management  
-- Real-time financial tracking and dashboards  
-- Inventory and cash flow monitoring  
-- Handsontable for dynamic data grids`,
-    logo: "https://api.dicebear.com/7.x/shapes/svg?seed=Shop+Management+System",
+    description: `Portfolio Personnel est une application web développée avec Django, permettant de présenter mes projets, compétences et expériences de manière professionnelle et interactive.  
+- **Présentation des projets** : Découvrez une sélection de mes réalisations avec leurs descriptions, technologies utilisées et aperçus visuels ;  
+- **Gestion de contenu dynamique** : Ajoutez et mettez à jour facilement les projets et informations via l’administration Django ;  
+- **Interface moderne et responsive** : Profitez d’un design adapté à tous les écrans pour une expérience utilisateur fluide ;  
+- **Navigation intuitive** : Accédez rapidement aux différentes sections (projets, compétences, contact) grâce à une structure claire ;  
+- **Mise en valeur du profil** : Présente efficacement mon parcours, mes compétences techniques et mon savoir-faire.`,
+    logo: "",
   },
   {
+    id: "JavaApp2",
+    title: "G-Colis",
+    period: { start: "2024" },
+    link: "https://github.com/Bienvenu733/G-Colis.git",
+    skills: [
+      "Java",
+      "Java Swing",
+      "OOP",
+      "JDBC",
+      "MySQL",
+      "Gestion des états (workflow)",
+    ],
+    isExpanded: true,
+
+    description: `G-Colis est une application desktop dédiée au suivi et à la gestion des colis, permettant d’assurer une meilleure organisation et traçabilité des livraisons.  
+- **Suivi des colis** : Enregistrez et suivez l’état des colis en temps réel, de l’expédition à la livraison ;  
+- **Gestion des expéditions** : Ajoutez les informations des colis (expéditeur, destinataire, contenu, statut) et gérez efficacement les envois ;  
+- **Historique et traçabilité** : Consultez l’historique complet des mouvements pour chaque colis afin d’assurer un suivi fiable ;  
+- **Gestion des statuts** : Mettez à jour les étapes de livraison (en cours, expédié, livré, en attente) facilement ;  
+- **Interface intuitive** : Profitez d’une application simple et ergonomique pour une gestion rapide et efficace.`,
+    logo: "",
+  },
+  {
+    id: "JavaApp1",
+    title: "BoulGest",
+    period: { start: "2024" },
+    link: "https://github.com/Bienvenu733/BoulGest.git",
+    skills: [
+      "Java",
+      "Java Swing",
+      "POO (Programmation Orientée Objet)",
+      "Gestion de base de données",
+      "UI Desktop",
+    ],
+    isExpanded: true,
+
+    description: `BoulGest est une application Desktop dédiée à la gestion complète d'une boulangerie, permettant d'optimiser les opérations quotidiennes et d'améliorer la productivité.  
+- **Gestion des produits** : Ajoutez, modifiez et suivez les pains, pâtisseries et autres produits avec leurs caractéristiques et prix ;
+- **Suivi des ventes** : Enregistrez les transactions quotidiennes et consultez l’historique des ventes en temps réel ;
+- **Gestion des stocks** : Surveillez les matières premières et recevez des alertes en cas de rupture de stock ;
+- **Gestion des commandes** : Organisez et suivez les commandes clients pour une meilleure planification ;
+- **Interface intuitive** : Profitez d’une application simple, rapide et facile à utiliser pour une gestion efficace.`,
+    logo: "",
+  },
+  {
+    id: "mets-locaux-bf",
+    title: "BFoods",
+    period: { start: "2023" },
+    link: "https://mets-locaux-bf.onrender.com/",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Design",
+    ],
+    isExpanded: true,
+
+    description: `BFoods est une plateforme dédiée à la valorisation de la richesse culinaire du Burkina Faso à travers ses différentes régions.  
+- **Exploration par régions** : Parcourez les différentes régions du Burkina Faso et découvrez leurs spécialités culinaires à travers une navigation simple et immersive ;
+- **Découverte des mets locaux** : Chaque région présente une sélection de plats traditionnels avec de belles images mettant en valeur la culture et le terroir ;
+- **Recettes détaillées** : Accédez aux ingrédients et aux étapes de préparation pour chaque plat afin de mieux comprendre et reproduire les recettes ;
+- **Valorisation du patrimoine culinaire** : Le site met en lumière les traditions gastronomiques locales et contribue à leur préservation ;
+- **Interface intuitive et responsive** : Profitez d’une expérience fluide sur tous les appareils avec un design moderne et accessible.`,
+    logo: "",
+  },
+  /*{
     id: "zombie-invasion-game",
     title: "3D Zombie Invasion Game",
     period: { start: "02.2024" },
@@ -230,5 +298,5 @@ export const PROJECTS: Project[] = [
 
 **Download:** [Extension ZIP](https://github.com/abdulrehmanwaseem/Chrome-Webpage-Colorizer-Extension/releases/download/Webpage-Colorizer/webpage-colorizer-extention.zip)`,
     logo: "https://api.dicebear.com/7.x/shapes/svg?seed=Chrome+Color+Customizer",
-  },
+  },*/
 ];

@@ -31,7 +31,7 @@ export const USER: User = {
   ],
   about: `
 - **Développeur Fullstack** avec **2+ ans d'expériences**. Reconnu pour mon architecture propre et mon souci du détail.
-- Expertise en technologies **Next.js**, **React**, **React Native**, **TypeScript**, **Node.js**, **Express.js**, **PostgreSQL**, **MongoDB**, **Tailwind CSS**, **Firebase**, **Expo**, **Zustand**. Je développe des applications web, mobiles, desktop.
+- Expertise en technologies **Next.js**, **React**, **React Native**, **TypeScript**, **Node.js**, **Express.js**, **PostgreSQL**, **MongoDB**, **Tailwind CSS**, **Firebase**, **Expo**, **Zustand**, **Java**, **Spring Boot**, **Python**. Je développe des applications web, mobiles, desktop.
 - **Passionné** par l'exploration de nouvelles technologies et la concrétisation d'idées à travers des projets aboutis et prêts pour la production. Exploration actuelle de la **conception de systèmes** et ambition de se spécialiser dans l'**intelligence artificielle** ou la **cybersécurité**.
 
 - **Mission**: Créer des logiciels offrant une expérience utilisateur exceptionnelle tout en restant à la pointe de la technologie.
