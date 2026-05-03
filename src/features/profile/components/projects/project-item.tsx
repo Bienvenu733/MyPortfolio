@@ -79,7 +79,7 @@ export function ProjectItem({
                 </dl>
               </div>
 
-              <SimpleTooltip content="Open Project Link">
+              <SimpleTooltip content="Ouvrir le lien du projet">
                 <a
                   className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
                   href={addQueryParams(project.link, UTM_PARAMS)}

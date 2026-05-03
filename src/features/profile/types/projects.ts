@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 export type Project = {
   /** Stable unique identifier (used as list key/anchor). */
   id: string;
@@ -19,7 +21,7 @@ export type Project = {
   /** Optional rich description; Markdown and line breaks supported. */
   description?: string;
   /** Logo image URL (absolute or path under /public). */
-  logo?: string;
+  logo?: string | StaticImageData;
   /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean;
 };
