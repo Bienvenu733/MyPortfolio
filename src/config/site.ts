@@ -3,7 +3,7 @@ import type { NavItem } from "@/types/nav";
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: process.env.APP_URL || "",
+  url: process.env.APP_URL || "https://myportfolio-xi-wine.vercel.app/",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -30,9 +30,9 @@ export const MAIN_NAV: NavItem[] = [
 ];
 
 export const GITHUB_USERNAME = "bienvenu733";
-export const SOURCE_CODE_GITHUB_REPO = "bienvenu733/MyPortfolio";
+export const SOURCE_CODE_GITHUB_REPO = "bienvenu733/My-Portfolio";
 export const SOURCE_CODE_GITHUB_URL =
-  "https://github.com/bienvenu733/MyPortfolio";
+  "https://github.com/bienvenu733/My-Portfolio";
 
 export const UTM_PARAMS = {
   utm_source: "https://bienvenu733.github.io",

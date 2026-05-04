@@ -25,4 +25,6 @@ export type Certification = {
   credentialURL: string;
 
   theme?: boolean;
+
+  description?: string;
 };
