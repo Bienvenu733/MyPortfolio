@@ -41,10 +41,10 @@ function CommandDialog({
     <Dialog {...props}>
       <DialogHeader className="sr-only">
         <DialogTitle asChild>
-          <p>{title}</p>
+          <p suppressHydrationWarning>{title}</p>
         </DialogTitle>
         <DialogDescription asChild>
-          <p>{description}</p>
+          <p suppressHydrationWarning>{description}</p>
         </DialogDescription>
       </DialogHeader>
 
