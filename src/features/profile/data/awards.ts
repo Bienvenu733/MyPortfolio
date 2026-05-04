@@ -38,7 +38,7 @@ export const AWARDS: Award[] = [
     date: "2025-04",
     grade: "DCLIC-OIF",
     description:
-      "-Formation sur le développement d'applications mobiles avec Flutter,\n couvrant les bases du développement mobile, la création d'interfaces utilisateur, la gestion de l'état, l'intégration d'API, et les meilleures pratiques pour le développement mobile multiplateforme.",
+      "Formation sur le développement d'applications mobiles avec Flutter,\n couvrant les bases du développement mobile, la création d'interfaces utilisateur, la gestion de l'état, l'intégration d'API, et les meilleures pratiques pour le développement mobile multiplateforme.",
     referenceLink:
       "https://drive.google.com/file/d/1RkLTKbRV2ECt6rTyNQKjpuCc3O_WCf-n/view?usp=sharing",
   },
@@ -49,7 +49,7 @@ export const AWARDS: Award[] = [
     date: "2024-10",
     grade: "DCLIC-OIF",
     description:
-      "-Formation sur les bases du développement mobile avec Flutter,\n incluant la création d'interfaces utilisateur\n et la gestion de l'état.",
+      "Formation sur les bases du développement mobile avec Flutter,\n incluant la création d'interfaces utilisateur\n et la gestion de l'état.",
     referenceLink:
       "https://drive.google.com/file/d/1uq-yKPwE5sE_3wOuQJLxIA6YD92fUafO/view?usp=sharing",
   },

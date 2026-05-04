@@ -20,7 +20,7 @@ export const USER: User = {
   secondPhoneNumber: "KzIyNiA2MCAwNyAxMCA3Ng==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   // base64-string-converter)
   email: "bW9pc2ViaWVudmVudTczM0BnbWFpbC5jb20=", // base64 encoded
-  website: "https://moisebienvenu.me",
+  website: "https://myportfolio-xi-wine.vercel.app/",
   jobTitle: "Fullstack Developer",
   jobs: [
     {
