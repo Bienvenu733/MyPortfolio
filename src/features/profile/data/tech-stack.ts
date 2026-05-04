@@ -41,14 +41,6 @@ export const TECH_STACK: TechStack[] = [
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
   },
   {
-    key: "sass",
-    title: "Sass",
-    href: "https://sass-lang.com/",
-    categories: ["Language"],
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
-  },
-  {
     key: "graphql",
     title: "GraphQL",
     href: "https://graphql.org/",
@@ -81,15 +73,6 @@ export const TECH_STACK: TechStack[] = [
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   },
   {
-    key: "threejs",
-    title: "Three.js",
-    href: "https://threejs.org/",
-    categories: ["Framework", "Library"],
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg",
-    theme: true,
-  },
-  {
     key: "expressjs",
     title: "Express.js",
     href: "https://expressjs.com/",
@@ -106,23 +89,6 @@ export const TECH_STACK: TechStack[] = [
     iconUrl:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
     theme: true,
-  },
-
-  {
-    key: "nestjs",
-    title: "NestJS",
-    href: "https://nestjs.com/",
-    categories: ["Framework", "Library"],
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg",
-  },
-  {
-    key: "electron",
-    title: "Electron",
-    href: "https://www.electronjs.org/",
-    categories: ["Framework", "Library"],
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg",
   },
   {
     key: "bun",
@@ -295,14 +261,6 @@ export const TECH_STACK: TechStack[] = [
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
   },
   {
-    key: "cloudinary",
-    title: "Cloudinary",
-    href: "https://cloudinary.com/",
-    categories: ["Database"],
-    iconUrl:
-      "https://res.cloudinary.com/cloudinary-marketing/image/upload/f_auto,q_auto/v1599098500/creative_source/Logo/Cloud%20Glyph/cloudinary_cloud_glyph_blue_png.png",
-  },
-  {
     key: "figma",
     title: "Figma",
     href: "https://www.figma.com/",
@@ -350,14 +308,5 @@ export const TECH_STACK: TechStack[] = [
     href: "https://render.com/",
     categories: ["Others"],
     iconUrl: "https://avatars.githubusercontent.com/u/36424661?s=200&v=4",
-  },
-  {
-    key: "aws-ses",
-    title: "AWS SES",
-    href: "https://aws.amazon.com/ses/",
-    categories: ["Others"],
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-    theme: true,
   },
 ];
