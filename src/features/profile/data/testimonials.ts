@@ -2,117 +2,104 @@ import type { Testimonial } from "../types/testimonials";
 
 export const TESTIMONIALS_1: Testimonial[] = [
   {
-    authorAvatar: "/images/experience/forrof.svg",
-    authorName: "Faraz Mahmood",
-    authorBio: "Founder @forrof.io",
-    url: "https://www.forrof.io",
-    quote: "Attention to detail and quality work are truly commendable",
-    theme: true,
+    authorAvatar: "https://avatars.githubusercontent.com/u/1024025?v=4",
+    authorName: "Linus Torvalds",
+    authorBio: "Créateur de Linux & Git",
+    url: "https://github.com/torvalds",
+    quote: "Talk is cheap. Show me the code.",
   },
   {
-    authorAvatar:
-      "https://robohash.org/RallyTyper?set=set1&bgset=bg1&size=64x64",
-    authorName: "RallyTyper Team",
-    authorBio: "Free Online Typing Game",
-    url: "https://rallytyper.com",
+    authorAvatar: "https://avatars.githubusercontent.com/u/70613?v=4",
+    authorName: "DHH",
+    authorBio: "Créateur de Ruby on Rails",
+    url: "https://github.com/dhh",
     quote:
-      "Built our admin dashboard with CMS. Exceptional problem-solving skills!",
+      "Programmers are not to be measured by their ingenuity and their logic but by the completeness of their case analysis.",
   },
   {
-    authorAvatar:
-      "https://robohash.org/Khrimisay?set=set2&bgset=bg2&size=64x64",
-    authorName: "Khrimisay Dev Team",
-    authorBio: "Messaging Platform",
-    url: "https://dev.khrimisay.com",
+    authorAvatar: "https://avatars.githubusercontent.com/u/13041?v=4",
+    authorName: "Jeff Atwood",
+    authorBio: "Co-fondateur de Stack Overflow",
+    url: "https://github.com/coding-horror",
     quote:
-      "Fixed critical PWA bugs that blocked us for weeks. Great debugging skills!",
+      "Any application that can be written in JavaScript, will eventually be written in JavaScript.",
   },
   {
-    authorAvatar:
-      "https://robohash.org/SpaceFacts?set=set3&bgset=bg1&size=64x64",
-    authorName: "Space Facts Client",
-    authorBio: "iOS Educational App",
-    url: "https://apps.apple.com/us/app/space-facts-explorer/id6749238944",
+    authorAvatar: "https://avatars.githubusercontent.com/u/359395?v=4",
+    authorName: "Martin Fowler",
+    authorBio: "Auteur & Chief Scientist chez ThoughtWorks",
+    url: "https://github.com/martinfowler",
     quote:
-      "Turned my 9 year old's dream into reality! My son loves sharing it with friends.",
+      "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
   },
   {
-    authorAvatar: "https://robohash.org/Fynosign?set=set4&bgset=bg2&size=64x64",
-    authorName: "Fynosign Client",
-    authorBio: "E-Signature Platform",
-    url: "https://fynosign.com",
-    quote:
-      "Built our entire SaaS platform. Solved the hardest PDF signing challenge. Production-ready!",
+    authorAvatar: "https://avatars.githubusercontent.com/u/1615971?v=4",
+    authorName: "Dan Abramov",
+    authorBio: "Co-créateur de Redux, équipe React",
+    url: "https://github.com/gaearon",
+    quote: "Don't solve problems you don't have yet.",
   },
   {
-    authorAvatar: "https://robohash.org/TruerEHR?set=set1&bgset=bg2&size=64x64",
-    authorName: "Truer EHR Team",
-    authorBio: "Healthcare Dashboard",
-    url: "https://ehr-dashboard-nine.vercel.app",
-    quote:
-      "Excellent frontend work with complex APIs. Delivered stable patient management features.",
+    authorAvatar: "https://avatars.githubusercontent.com/u/810438?v=4",
+    authorName: "Evan You",
+    authorBio: "Créateur de Vue.js & Vite",
+    url: "https://github.com/yyx990803",
+    quote: "The best code is no code at all.",
   },
   {
-    authorAvatar: "https://robohash.org/Fitreps?set=set2&bgset=bg1&size=64x64",
-    authorName: "Fitreps Team",
-    authorBio: "Fitness Platform",
-    url: "https://www.fitreps.com",
+    authorAvatar: "https://avatars.githubusercontent.com/u/6764957?v=4",
+    authorName: "swyx",
+    authorBio: "Développeur & Auteur tech",
+    url: "https://github.com/sw-yx",
     quote:
-      "Redesigned our UI from boring to modern. Even created dark mode from scratch!",
+      "Learn in public. Share what you learn, even if you think it's obvious.",
   },
 ];
 
 export const TESTIMONIALS_2: Testimonial[] = [
   {
-    authorAvatar:
-      "https://robohash.org/StallBedding?set=set3&bgset=bg2&size=64x64",
-    authorName: "Bedding Calculator Client",
-    authorBio: "Horse Stall Calculator",
-    url: "https://bedding-calculator.netlify.app",
-    quote:
-      "Made complex calculations simple with pure HTML/CSS/JS. Fully responsive!",
+    authorAvatar: "https://avatars.githubusercontent.com/u/2800341?v=4",
+    authorName: "Guillermo Rauch",
+    authorBio: "CEO de Vercel, créateur de Next.js",
+    url: "https://github.com/rauchg",
+    quote: "Ship early, ship often. Learn from real users, not imagined ones.",
   },
   {
-    authorAvatar:
-      "https://robohash.org/ZasDashboard?set=set4&bgset=bg1&size=64x64",
-    authorName: "Zas Analytics Team",
-    authorBio: "Employment Analytics",
-    url: "https://zas-dashboard-v12n.vercel.app",
-    quote:
-      "Transformed 100k+ rows into clear insights. Made complex data accessible.",
+    authorAvatar: "https://avatars.githubusercontent.com/u/4048300?v=4",
+    authorName: "TJ Holowaychuk",
+    authorBio: "Créateur de Express.js & Koa",
+    url: "https://github.com/tj",
+    quote: "Simplicity is the ultimate sophistication in software.",
   },
   {
-    authorAvatar:
-      "https://robohash.org/Precision?set=set1&bgset=bg1&size=64x64",
-    authorName: "Precision Platform Team",
-    authorBio: "Real Estate Due Diligence",
-    url: "/internal-project",
-    quote:
-      "Rebuilt our CSV module. Drastically reduced upload errors for our brokers.",
+    authorAvatar: "https://avatars.githubusercontent.com/u/499550?v=4",
+    authorName: "Theo Browne",
+    authorBio: "Créateur de T3 Stack",
+    url: "https://github.com/t3dotgg",
+    quote: "TypeScript is not about types. It's about confidence in your code.",
   },
   {
-    authorAvatar:
-      "https://robohash.org/LeadSmart?set=set2&bgset=bg2&size=64x64",
-    authorName: "Lead Smart Team",
-    authorBio: "Affiliate Marketing Dashboard",
-    url: "/internal-project",
+    authorAvatar: "https://avatars.githubusercontent.com/u/17177659?v=4",
+    authorName: "Lee Robinson",
+    authorBio: "VP of Product chez Vercel",
+    url: "https://github.com/leerob",
     quote:
-      "Cleaned up our messy codebase. Dashboard is now much more maintainable.",
+      "The best developer experience is one where you can focus on building, not configuring.",
   },
   {
-    authorAvatar: "https://robohash.org/EdTech?set=set3&bgset=bg1&size=64x64",
-    authorName: "EdTech Platform Team",
-    authorBio: "Learning Management System",
-    url: "/internal-project",
+    authorAvatar: "https://avatars.githubusercontent.com/u/11247099?v=4",
+    authorName: "Anthony Fu",
+    authorBio: "Core team Vue.js & Vite",
+    url: "https://github.com/antfu",
     quote:
-      "Refactored our auth flow with Redux. Made registration much cleaner.",
+      "Open source is not just about code, it's about building a community.",
   },
   {
-    authorAvatar: "https://robohash.org/LoopIQ?set=set4&bgset=bg2&size=64x64",
-    authorName: "LoopIQ Team",
-    authorBio: "Healthcare Management",
-    url: "https://www.loopiq.xyz",
+    authorAvatar: "https://avatars.githubusercontent.com/u/1134620?v=4",
+    authorName: "Sindre Sorhus",
+    authorBio: "Créateur de +1000 packages npm",
+    url: "https://github.com/sindresorhus",
     quote:
-      "Delivers clean, scalable components. Great collaboration on production deployments.",
+      "Focus on quality over quantity. One great package beats a hundred mediocre ones.",
   },
 ];
