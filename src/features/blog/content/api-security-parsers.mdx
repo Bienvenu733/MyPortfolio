@@ -1,0 +1,379 @@
+---
+title: "Sécurité API : Pourquoi ne jamais faire confiance aux inputs utilisateur"
+description: "Découvrez comment les parsers et validateurs protègent vos APIs contre les attaques malveillantes et la corruption de données avec exemples pratiques utilisant Zod, Joi et class-validator."
+date: "2025-01-15"
+tags: ["sécurité", "api", "validation", "nodejs", "backend"]
+author: "Moïse Bienvenu"
+readTime: "8 min"
+image: /images/blogs/APISecurity.png
+---
+
+## Introduction
+
+Chaque jour, d'innombrables APIs sont compromises par une simple erreur : **faire confiance aux inputs utilisateur**. Du JSON malformé aux attaques par injection, la surface de vulnérabilités est énorme quand nous supposons que les données entrantes sont sûres.
+
+Dans cet article, nous allons explorer pourquoi la validation des entrées est non négociable, ce que font réellement les parsers, et comment implémenter une validation robuste dans vos APIs.
+
+<FramedImage
+  src="/images/blogs/APISecurity.png"
+  alt="Bouclier de sécurité API - Protection contre les inputs malveillants"
+/>
+
+## Le problème : Les inputs utilisateur sont dangereux
+
+### Pourquoi les données ne sont jamais fiables
+
+Quand les données viennent de l'extérieur de votre système, elles peuvent être :
+
+- **Malformées** : JSON invalide, mauvais types de données
+- **Malveillantes** : Injection SQL, payloads XSS, injection de commandes
+- **Inattendues** : Champs manquants, propriétés supplémentaires, mauvais formats
+- **Surdimensionnées** : Tentatives de dépassement de tampon, épuisement mémoire
+
+### Exemples réels
+
+```json
+// JSON malformé qui peut planter les parsers
+{
+  "name": "John",
+  "age": 25, // virgule finale
+}
+
+// Tentative d'injection
+{
+  "search": "'; DROP TABLE users; --"
+}
+
+// Confusion de types
+{
+  "age": "vingt-cinq", // nombre attendu, chaîne reçue
+  "isAdmin": "true"    // booléen attendu, chaîne reçue
+}
+```
+
+## Que sont les parsers et validateurs ?
+
+### Différences clés
+
+1. **Parsing** : Conversion de données brutes en format structuré
+2. **Validation** : Vérification si les données respectent des règles spécifiques
+3. **Sanitization** : Nettoyage des données pour les rendre sûres
+
+```javascript
+// Parsing : Chaîne → Objet
+const parsed = JSON.parse('{"name": "John"}');
+
+// Validation : Vérification des règles
+const isValid = parsed.name && typeof parsed.name === "string";
+
+// Sanitization : Rendre sûr
+const sanitized = parsed.name.trim().substring(0, 100);
+```
+
+## L'exemple vulnérable
+
+Voici un endpoint API typique vulnérable :
+
+```javascript
+// ❌ CODE VULNÉRABLE
+app.post("/api/users", (req, res) => {
+  const { name, age, email } = req.body;
+
+  // Aucune validation - catastrophe en attente
+
+  // Insertion directe en base de données
+  db.query(
+    `INSERT INTO users (name, age, email) VALUES ('${name}', ${age}, '${email}')`
+  );
+
+  res.json({ success: true });
+});
+```
+
+### Qu'est-ce qui peut mal tourner ?
+
+1. **Injection SQL** :
+
+   ```json
+   {
+     "name": "John', 'admin'); DROP TABLE users; --",
+     "age": 25,
+     "email": "test@test.com"
+   }
+   ```
+
+2. **Erreurs de type** :
+
+   ```json
+   {
+     "name": "John",
+     "age": "pas-un-nombre", // Erreur de base de données
+     "email": null
+   }
+   ```
+
+3. **Données manquantes** :
+   ```json
+   {
+     "name": "John"
+     // Champs requis manquants
+   }
+   ```
+
+## La solution : Validation robuste
+
+### Utilisation de Zod (Recommandé)
+
+```javascript
+import { z } from "zod";
+
+// Définir votre schéma
+const userSchema = z.object({
+  name: z.string().min(2).max(50),
+  age: z.number().min(0).max(120),
+  email: z.string().email(),
+  isAdmin: z.boolean().optional().default(false),
+});
+
+// ✅ CODE SÉCURISÉ
+app.post("/api/users", (req, res) => {
+  try {
+    const validatedData = userSchema.parse(req.body);
+
+    // Maintenant nous savons que les données sont sûres
+    db.query(
+      "INSERT INTO users (name, age, email, isAdmin) VALUES (?, ?, ?, ?)",
+      [
+        validatedData.name,
+        validatedData.age,
+        validatedData.email,
+        validatedData.isAdmin,
+      ]
+    );
+
+    res.json({ success: true, user: validatedData });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        error: "Validation échouée",
+        details: error.errors,
+      });
+    }
+    res.status(500).json({ error: "Erreur serveur interne" });
+  }
+});
+```
+
+### Utilisation de Joi
+
+```javascript
+import Joi from "joi";
+
+const userSchema = Joi.object({
+  name: Joi.string().min(2).max(50).required(),
+  age: Joi.number().min(0).max(120).required(),
+  email: Joi.string().email().required(),
+  isAdmin: Joi.boolean().default(false),
+});
+
+app.post("/api/users", (req, res) => {
+  const { error, value } = userSchema.validate(req.body);
+
+  if (error) {
+    return res.status(400).json({
+      error: "Validation échouée",
+      details: error.details,
+    });
+  }
+
+  // Utiliser les données validées
+  db.query("INSERT INTO users SET ?", value);
+  res.json({ success: true, user: value });
+});
+```
+
+### Utilisation de Class-Validator (NestJS)
+
+```typescript
+import { IsString, IsEmail, IsNumber, Min, Max } from "class-validator";
+
+export class CreateUserDto {
+  @IsString()
+  @MinLength(2)
+  @MaxLength(50)
+  name: string;
+
+  @IsNumber()
+  @Min(0)
+  @Max(120)
+  age: number;
+
+  @IsEmail()
+  email: string;
+}
+
+@Controller("users")
+export class UsersController {
+  @Post()
+  create(@Body() createUserDto: CreateUserDto) {
+    // DTO automatiquement validé par NestJS
+    return this.usersService.create(createUserDto);
+  }
+}
+```
+
+## Attaques prévenues par la validation
+
+### 1. Injection SQL
+
+```javascript
+// Sans validation : Vulnérable
+const query = `SELECT * FROM users WHERE name = '${name}'`;
+
+// Avec validation : Sûr
+const query = "SELECT * FROM users WHERE name = ?";
+```
+
+### 2. Confusion de types
+
+```javascript
+// Zod attrape automatiquement les erreurs de type
+const schema = z.object({
+  age: z.number(),
+});
+
+schema.parse({ age: "25" }); // Lance : Nombre attendu, chaîne reçue
+```
+
+### 3. Dépassement de tampon
+
+```javascript
+// Limiter les longueurs de chaînes
+const schema = z.object({
+  name: z.string().max(100), // Empêche les entrées excessivement longues
+});
+```
+
+## Bonnes pratiques
+
+### 1. Tout valider
+
+```javascript
+// Valider les paramètres de requête
+const querySchema = z.object({
+  page: z.string().transform(Number).pipe(z.number().min(1)),
+  limit: z.string().transform(Number).pipe(z.number().max(100)),
+});
+
+// Valider les en-têtes
+const headerSchema = z.object({
+  "content-type": z.literal("application/json"),
+  "x-api-key": z.string().min(10),
+});
+```
+
+### 2. Centraliser les schémas
+
+```javascript
+// schemas/user.js
+export const userSchemas = {
+  create: z.object({
+    name: z.string().min(2).max(50),
+    email: z.string().email(),
+  }),
+
+  update: z
+    .object({
+      name: z.string().min(2).max(50).optional(),
+      email: z.string().email().optional(),
+    })
+    .partial(),
+};
+```
+
+### 3. Ne jamais faire confiance au frontend
+
+```javascript
+// ❌ FAUX : Validation frontend seulement
+if (frontendValidation()) {
+  // Toujours vulnérable !
+}
+
+// ✅ CORRECT : Validation backend toujours
+const validated = backendSchema.parse(req.body);
+```
+
+### 4. Utiliser des requêtes paramétrées
+
+```javascript
+// ❌ Vulnérable
+db.query(`SELECT * FROM users WHERE name = '${name}'`);
+
+// ✅ Sûr
+db.query("SELECT * FROM users WHERE name = ?", [name]);
+```
+
+## Techniques de validation avancées
+
+### Validateurs personnalisés
+
+```javascript
+const customSchema = z.object({
+  password: z
+    .string()
+    .min(8)
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+      "Le mot de passe doit contenir majuscule, minuscule et nombre"
+    ),
+});
+```
+
+### Validation asynchrone
+
+```javascript
+const userSchema = z.object({
+  email: z
+    .string()
+    .email()
+    .refine(async (email) => {
+      const exists = await checkEmailExists(email);
+      return !exists;
+    }, "Email déjà enregistré"),
+});
+```
+
+### Objets imbriqués
+
+```javascript
+const profileSchema = z.object({
+  user: z.object({
+    name: z.string(),
+    contact: z.object({
+      email: z.string().email(),
+      phone: z.string().optional(),
+    }),
+  }),
+});
+```
+
+## 🔑 Points clés à retenir
+
+- **Ne jamais faire confiance aux inputs utilisateur** - toujours valider sur le backend
+- **Utiliser des bibliothèques de validation appropriées** comme Zod, Joi ou class-validator
+- **Tout valider** - body, params, query, headers
+- **Utiliser des requêtes paramétrées** pour prévenir l'injection SQL
+- **Centraliser la logique de validation** pour la maintenabilité
+- **Fournir des messages d'erreur clairs** pour aider les développeurs à déboguer
+
+## 📚 Pour aller plus loin
+
+- [Documentation Zod](https://zod.dev/) - Validation de schéma TypeScript-first
+- [Documentation Joi](https://joi.dev/) - Validation de schéma d'objet
+- [OWASP Input Validation](https://owasp.org/www-community/attacks/Input_Validation) - Meilleures pratiques de sécurité
+- [Validation NestJS](https://docs.nestjs.com/techniques/validation) - Décorateurs de validation intégrés
+- [Prévention Injection SQL](https://owasp.org/www-community/attacks/SQL_Injection) - Guide OWASP
+
+---
+
+**Rappelez-vous** : En sécurité, la paranoïa est une fonctionnalité. Validez tout, ne faites confiance à rien, et vos APIs seront beaucoup plus sécurisées.

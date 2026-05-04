@@ -26,7 +26,7 @@ export const USER: User = {
     {
       title: "Développeur Fullstack Web, Mobile et Desktop",
       company: "Dokal Technologies",
-      website: "https://dokal.com",
+      website: "",
     },
   ],
   about: `
