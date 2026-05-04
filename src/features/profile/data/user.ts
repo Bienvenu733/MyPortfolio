@@ -36,7 +36,7 @@ export const USER: User = {
 
 - **Mission**: Créer des logiciels offrant une expérience utilisateur exceptionnelle tout en restant à la pointe de la technologie.
 `,
-  avatar: "/images/me.PNG",
+  avatar: "/images/me.png",
   ogImage: "/images/og-image-light.png",
   namePronunciationUrl: "/audio/moise.mp3",
   keywords: [
