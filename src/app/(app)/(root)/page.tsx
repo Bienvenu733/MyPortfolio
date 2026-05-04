@@ -65,8 +65,7 @@ export default function Page() {
 
         <Certifications />
         <Separator />
-
-        <Brand />
+        <Separator />
         <Separator />
       </div>
     </>

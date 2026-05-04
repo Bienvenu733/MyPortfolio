@@ -14,7 +14,7 @@ export const AWARDS: Award[] = [
     id: "ODC2025_2",
     prize: "Participation",
     title: "Attestation (Formation IA)",
-    date: "2025-02",
+    date: "2025-01",
     grade: "Orange Digital Center",
     description:
       "Initiation à l'Intelligence Artificielle pour booster les performances",

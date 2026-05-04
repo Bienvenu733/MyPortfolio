@@ -2,67 +2,74 @@ import type { Certification } from "../types/certifications";
 
 export const CERTIFICATIONS: Certification[] = [
   {
-    title: "HydThon - AI Hackathon 2026 Participation",
-    issuer: "Intrapreneur",
-    issuerLogoURL: "/images/experience/intrapreneur.jpg",
-    issueDate: "2026-02-07",
-    credentialID: "hydthon-2026",
-    credentialURL:
-      "https://drive.google.com/file/d/1l3HiBKr5m-ypd8l5DlDwvCXWOc_YPg4P/view",
+    title: "Formation en Machine Learning",
+    issuer: "ODC (Orange Digital Center)",
+    issuerLogoURL: "/images/experience/formation_ia.jpg",
+    issueDate: "2026-06-10",
+    credentialID: "",
+    credentialURL: "",
+    description:
+      "Participation au Hackathon d'IA HydThon 2026, axé sur l'innovation dans les solutions d'intelligence artificielle pour les défis contemporains.",
   },
   {
-    title: "JavaScript Essentials 2",
-    issuer: "Cisco Networking Academy",
-    issuerLogoURL: "/images/experience/cisco.jpg",
-    issueDate: "2025-12-23",
-    credentialID: "9cf646db",
-    credentialURL:
-      "https://www.credly.com/badges/9cf646db-c4d1-4bfc-a348-7b8fda722d98/linked_in_profile",
+    title: "Développement mobile Niveau intermédiaire",
+    issuer: "DCLIC-OIF",
+    issuerLogoURL: "/images/experience/dclic.png",
+    issueDate: "2025-04-01",
+    credentialID: "",
+    credentialURL: "",
+    description:
+      "Approfondissement des connaissances Python avec les structures de données avancées, la programmation orientée objet et les modules standards.",
   },
   {
-    title: "Python Essentials 2",
-    issuer: "Cisco Networking Academy",
-    issuerLogoURL: "/images/experience/cisco.jpg",
-    issueDate: "2025-12-22",
-    credentialID: "dd6c1b93",
-    credentialURL:
-      "https://www.credly.com/badges/dd6c1b93-08a2-4c17-89e1-cdf443cd708a/linked_in_profile",
+    title: "Formation sur la conception de site web avec WordPress",
+    issuer: "ODC (Orange Digital Center)",
+    issuerLogoURL: "/images/experience/formation_wordpress.jpg",
+    issueDate: "2025-02-24",
+    credentialID: "",
+    credentialURL: "",
+    description:
+      "Maîtrise des concepts avancés de JavaScript incluant la manipulation DOM, les événements, et les meilleures pratiques de programmation.",
   },
   {
-    title: "Python Essentials 1",
-    issuer: "Cisco Networking Academy",
-    issuerLogoURL: "/images/experience/cisco.jpg",
-    issueDate: "2025-12-08",
-    credentialID: "e34fa61e",
-    credentialURL:
-      "https://www.credly.com/badges/e34fa61e-0b5c-4bf8-82fc-25769c20cd4d/public_url",
+    title: "Formation sur l'IA pour booster les performances",
+    issuer: "ODC (Orange Digital Center)",
+    issuerLogoURL: "/images/experience/formation_ia.jpg",
+    issueDate: "2025-01-27",
+    credentialID: "",
+    credentialURL: "",
+    description:
+      "Introduction aux fondamentaux de Python incluant les types de données, les structures de contrôle, les fonctions et la gestion des fichiers.",
   },
   {
-    title: "Coding Night 2025 – Hackathon Participation",
-    issuer: "Saylani Mass IT Training (SMIT)",
-    issuerLogoURL: "/images/experience/smit.jpg",
-    issueDate: "2025-11-01",
-    credentialID: "448349",
-    credentialURL:
-      "https://drive.google.com/file/d/1mN7kY7kinKm_ar0JiagLzzTPEvHROs5Q/view",
+    title: "Formation en développement Web avec Django",
+    issuer: "OpenClassrooms",
+    issuerLogoURL: "/images/experience/openclassrooms.jpg",
+    issueDate: "2024-11-01",
+    credentialID: "",
+    credentialURL: "",
+    description:
+      "Participation au hackathon Coding Night 2025 avec développement d'une solution innovative en équipe dans un temps limité.",
   },
   {
-    title: "Certificate of Participation",
-    issuer: "Decentral Developers",
-    issuerLogoURL: "/images/experience/decentral-developers.png",
-    issueDate: "2025-02-05",
-    credentialID: "002000",
-    credentialURL:
-      "https://drive.google.com/file/d/13ZuRZfrHWkAS_OQrlqHlTto6F7MOaO2y/view",
+    title: "Formation en développement Web avec React",
+    issuer: "OpenClassrooms",
+    issuerLogoURL: "/images/experience/openclassrooms.jpg",
+    issueDate: "2024-08-01",
+    credentialID: "",
+    credentialURL: "",
+    description:
+      "Participation au hackathon Coding Night 2025 avec développement d'une solution innovative en équipe dans un temps limité.",
   },
   {
-    title: "Getting started with DeepSeek",
-    issuer: "Analytics Vidhya",
-    issuerLogoURL: "/images/experience/analytics-vidhya.svg",
-    issueDate: "2025-01-30",
-    credentialID: "az6prksfry",
-    credentialURL:
-      "https://courses.analyticsvidhya.com/certificates/az6prksfry",
+    title: "Développement mobile Niveau Débutant",
+    issuer: "DCLIC-OIF",
+    issuerLogoURL: "/images/experience/dclic.png",
+    issueDate: "2024-04-01",
+    credentialID: "",
+    credentialURL: "",
+    description:
+      "Approfondissement des connaissances Python avec les structures de données avancées, la programmation orientée objet et les modules standards.",
     theme: true,
   },
 ];

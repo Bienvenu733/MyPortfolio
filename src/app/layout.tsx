@@ -49,11 +49,11 @@ export const metadata: Metadata = {
   keywords: SITE_INFO.keywords,
   authors: [
     {
-      name: "abdulrehman",
+      name: "Moïse Bienvenu Ouedraogo",
       url: SITE_INFO.url,
     },
   ],
-  creator: "abdulrehman",
+  creator: "Moïse Bienvenu Ouedraogo",
   openGraph: {
     siteName: SITE_INFO.name,
     url: "/",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@abdulrehman_code", // Twitter username
+    creator: "@moisebienvenu", // Twitter username
     images: [SITE_INFO.ogImage],
   },
   icons: {
