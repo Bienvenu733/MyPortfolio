@@ -102,7 +102,7 @@ export function CertificationItem({
                       className="pointer-events-none size-4"
                       aria-hidden
                     />
-                    <span className="sr-only">Open Certificate</span>
+                    <span className="sr-only">Ouvrir</span>
                   </a>
                 </SimpleTooltip>
               )}

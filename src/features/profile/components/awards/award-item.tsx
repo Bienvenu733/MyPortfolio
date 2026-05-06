@@ -75,7 +75,7 @@ export function AwardItem({
               </div>
 
               {award.referenceLink && (
-                <SimpleTooltip content="Open Reference Attachment">
+                <SimpleTooltip content="Ouvrir la pièce jointe">
                   <a
                     className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
                     href={award.referenceLink}
@@ -86,7 +86,7 @@ export function AwardItem({
                       className="pointer-events-none size-4"
                       aria-hidden
                     />
-                    <span className="sr-only">Open Reference Attachment</span>
+                    <span className="sr-only">Ouvrir la pièce jointe</span>
                   </a>
                 </SimpleTooltip>
               )}
