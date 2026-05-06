@@ -8,7 +8,8 @@ export const AWARDS: Award[] = [
     date: "2025-06",
     grade: "Orange Digital Center",
     description: "Initiation au Machine Learning",
-    referenceLink: "",
+    referenceLink:
+      "https://drive.google.com/file/d/1EiidswzqZCC_YPlbqd8hDHyh-wmsSXRz/view?usp=sharing",
   },
   {
     id: "ODC2025_2",

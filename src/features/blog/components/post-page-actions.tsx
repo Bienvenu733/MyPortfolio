@@ -115,7 +115,7 @@ export function ViewOptions({
         icon: Icons.markdown,
       },
       {
-        title: "Open in ChatGPT",
+        title: "Ouvrir avec ChatGPT",
         href: `https://chatgpt.com/?${new URLSearchParams({
           hints: "search",
           q,
@@ -123,14 +123,14 @@ export function ViewOptions({
         icon: Icons.openai,
       },
       {
-        title: "Open in Claude",
+        title: "Ouvrir avec Claude",
         href: `https://claude.ai/new?${new URLSearchParams({
           q,
         })}`,
         icon: Icons.claude,
       },
       {
-        title: "Open in Scira AI",
+        title: "Ouvrir avec Scira AI",
         href: `https://scira.ai/?${new URLSearchParams({
           q,
         })}`,
@@ -140,7 +140,7 @@ export function ViewOptions({
 
     if (isComponent) {
       _items.splice(1, 0, {
-        title: "Open in v0",
+        title: "Ouvrir avec v0",
         href: `https://v0.app/?${new URLSearchParams({
           q,
         })}`,
