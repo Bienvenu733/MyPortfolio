@@ -1,7 +1,7 @@
 import { SITE_INFO } from "@/config/site";
 import { getAllPosts } from "@/features/blog/data/posts";
 
-const allPosts = getAllPosts();
+const allPosts = getAllPosts("en");
 
 const content = `# abdulrehmanwaseem.me
 

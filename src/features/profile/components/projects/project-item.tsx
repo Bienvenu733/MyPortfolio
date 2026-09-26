@@ -1,5 +1,6 @@
 import { InfinityIcon, LinkIcon } from "lucide-react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 
 import { Icons } from "@/components/icons";
@@ -25,6 +26,8 @@ export function ProjectItem({
   className?: string;
   project: Project;
 }) {
+  const t = useTranslations("projects");
+  const locale = useLocale();
   const { start, end } = project.period;
   const isOngoing = !end;
 
@@ -35,7 +38,7 @@ export function ProjectItem({
           {project.logo ? (
             <Image
               src={project.logo}
-              alt={project.title}
+              alt={project.title[locale]}
               width={32}
               height={32}
               quality={100}
@@ -56,11 +59,11 @@ export function ProjectItem({
             <CollapsibleTrigger className="flex w-full items-center gap-4 p-4 pr-2 text-left select-none">
               <div className="flex-1">
                 <h3 className="mb-1 leading-snug font-medium text-balance">
-                  {project.title}
+                  {project.title[locale]}
                 </h3>
 
                 <dl className="text-sm text-muted-foreground">
-                  <dt className="sr-only">Period</dt>
+                  <dt className="sr-only">{t("period")}</dt>
                   <dd className="flex items-center gap-0.5">
                     <span>{start}</span>
                     <span className="font-mono">—</span>
@@ -70,7 +73,7 @@ export function ProjectItem({
                           className="size-4.5 translate-y-[0.5px]"
                           aria-hidden
                         />
-                        <span className="sr-only">Present</span>
+                        <span className="sr-only">{t("present")}</span>
                       </>
                     ) : (
                       <span>{end}</span>
@@ -79,7 +82,7 @@ export function ProjectItem({
                 </dl>
               </div>
 
-              <SimpleTooltip content="Ouvrir le lien du projet">
+              <SimpleTooltip content={t("openProjectLink")}>
                 <a
                   className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
                   href={addQueryParams(project.link, UTM_PARAMS)}
@@ -87,7 +90,7 @@ export function ProjectItem({
                   rel="noopener"
                 >
                   <LinkIcon className="pointer-events-none size-4" />
-                  <span className="sr-only">Open Project Link</span>
+                  <span className="sr-only">{t("openProjectLink")}</span>
                 </a>
               </SimpleTooltip>
 
@@ -106,7 +109,7 @@ export function ProjectItem({
             <div className="space-y-4 p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
               {project.description && (
                 <Prose>
-                  <Markdown>{project.description}</Markdown>
+                  <Markdown>{project.description[locale]}</Markdown>
                 </Prose>
               )}
 

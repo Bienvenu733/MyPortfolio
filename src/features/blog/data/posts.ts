@@ -3,6 +3,9 @@ import matter from "gray-matter";
 import path from "path";
 
 import type { Post, PostMetadata } from "@/features/blog/types/post";
+import { routing } from "@/i18n/routing";
+
+type Locale = (typeof routing.locales)[number];
 
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent);
@@ -38,26 +41,34 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getAllPosts() {
-  return getMDXData(path.join(process.cwd(), "src/features/blog/content")).sort(
-    (a, b) => {
-      if (a.metadata.pinned && !b.metadata.pinned) return -1;
-      if (!a.metadata.pinned && b.metadata.pinned) return 1;
+export function getAllPosts(locale: Locale = routing.defaultLocale) {
+  return getMDXData(
+    path.join(process.cwd(), "src/features/blog/content", locale)
+  ).sort((a, b) => {
+    if (a.metadata.pinned && !b.metadata.pinned) return -1;
+    if (!a.metadata.pinned && b.metadata.pinned) return 1;
 
-      return (
-        new Date(b.metadata.createdAt).getTime() -
-        new Date(a.metadata.createdAt).getTime()
-      );
-    }
+    return (
+      new Date(b.metadata.createdAt).getTime() -
+      new Date(a.metadata.createdAt).getTime()
+    );
+  });
+}
+
+export function getPostBySlug(
+  slug: string,
+  locale: Locale = routing.defaultLocale
+) {
+  return getAllPosts(locale).find((post) => post.slug === slug);
+}
+
+export function getPostsByCategory(
+  category: string,
+  locale: Locale = routing.defaultLocale
+) {
+  return getAllPosts(locale).filter(
+    (post) => post.metadata?.category === category
   );
-}
-
-export function getPostBySlug(slug: string) {
-  return getAllPosts().find((post) => post.slug === slug);
-}
-
-export function getPostsByCategory(category: string) {
-  return getAllPosts().filter((post) => post.metadata?.category === category);
 }
 
 export function findNeighbour(posts: Post[], slug: string) {

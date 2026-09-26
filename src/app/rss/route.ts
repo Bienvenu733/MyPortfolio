@@ -6,7 +6,7 @@ import { getAllPosts } from "@/features/blog/data/posts";
 export const dynamic = "force-static";
 
 export function GET() {
-  const allPosts = getAllPosts();
+  const allPosts = getAllPosts("en");
 
   const itemsXml = allPosts
     .map(

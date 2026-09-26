@@ -1,0 +1,108 @@
+---
+title: "ESLint & Prettier : Impact réel dans les équipes professionnelles"
+description: "Au-delà de l'installation - découvrez comment ESLint et Prettier améliorent réellement la productivité et créent des bases de code maintenables."
+createdAt: "2025-12-10"
+updatedAt: "2025-12-10"
+tags:
+  ["outillage", "productivité", "qualité-code", "workflow-équipe", "javascript"]
+author: "Moïse Bienvenu"
+readTime: "4 min"
+image: /images/blogs/ESLint_Prettier.png
+---
+
+## Introduction
+
+Chaque développeur a vécu ça : rejoindre un projet où le style de code est incohérent, des bugs s'infiltrent à cause d'erreurs simples, et les revues de code deviennent des débats de formatage. Ce n'est pas juste agaçant—c'est coûteux.
+
+<FramedImage
+  src="/images/blogs/ESLint_Prettier.png"
+  alt="Logos ESLint et Prettier représentant la qualité et le formatage du code"
+/>
+
+## Deux outils, deux métiers
+
+**ESLint** trouve des **problèmes** dans votre code (bugs potentiels, anti-patterns, code smells). **Prettier** gère le **style** de manière cohérente (indentation, guillemets, espacement).
+
+```javascript
+// ESLint attrape des bugs réels :
+if ((user.isAdmin = true)) {
+  // ❌ Assignation au lieu de comparaison
+  deleteUser();
+}
+
+// Prettier corrige le formatage incohérent :
+const obj = { name: "John", age: 25 }; // ❌ Moche
+const obj = { name: "John", age: 25 }; // ✅ Prettier
+```
+
+Sans ces outils, le git diff d'une PR est souvent 90% formatage et 10% logique, et les revues se transforment en débats de style ("ajoute un point-virgule", "utilise des guillemets simples") au lieu de porter sur la logique métier.
+
+## Une configuration minimale qui fonctionne
+
+```json
+// .eslintrc.json
+{
+  "extends": [
+    "eslint:recommended",
+    "@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-console": "warn",
+    "prefer-const": "error"
+  }
+}
+```
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 80
+}
+```
+
+Le point important : `"extends": ["prettier"]` désactive les règles de formatage d'ESLint pour éviter les conflits. Chaque outil reste dans son rôle.
+
+## Automatiser avec des hooks pre-commit
+
+```bash
+npm install --save-dev husky lint-staged
+npx husky install
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+
+```json
+// package.json
+{
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": ["eslint --fix", "prettier --write"]
+  }
+}
+```
+
+Ainsi, aucun code mal formaté ou avec des erreurs évidentes n'atteint jamais le dépôt — l'équipe n'a plus besoin d'y penser.
+
+## Pièges courants
+
+- **Trop de règles** : commencez avec 5-6 règles essentielles (`no-unused-vars`, `no-console`, `prefer-const`...) et étendez progressivement plutôt que d'importer un preset de 50 règles
+- **Conflits ESLint/Prettier** : toujours désactiver les règles de formatage d'ESLint via `eslint-config-prettier`
+- **Ignorer les mauvais fichiers** : excluez `node_modules/` et `dist/`, mais jamais `src/` ou `tests/`
+
+## 🔑 Points clés à retenir
+
+- **ESLint trouve les bugs**, Prettier gère le formatage - ils se complètent
+- **Automatiser** avec les hooks pre-commit élimine le besoin d'y penser
+- **Commencer petit** avec des règles essentielles, étendre progressivement
+- **Laisser Prettier gérer le style**, ESLint se concentre sur la qualité
+
+## 📚 Pour aller plus loin
+
+- [ESLint Handbook](https://eslint.org/docs/latest/use/getting-started)
+- [Husky Git Hooks](https://typicode.github.io/husky/)
+
+---
+
+**Rappelez-vous** : ces outils ne visent pas à restreindre la créativité—ils visent à éliminer les trucs ennuyeux pour vous permettre de vous concentrer sur l'écriture de bon code.

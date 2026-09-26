@@ -1,7 +1,9 @@
+import type { LocalizedText } from "./i18n";
+
 export type Award = {
   id: string;
-  prize: string;
-  title: string;
+  prize: LocalizedText;
+  title: LocalizedText;
   /**
    * Award date used for sorting and display.
    * Format: "YYYY-MM" preferred (e.g., "2018-03"); "YYYY" is also accepted.
@@ -12,7 +14,7 @@ export type Award = {
    */
   grade: string;
   /** Optional rich text description; Markdown and line breaks supported. */
-  description?: string;
+  description?: LocalizedText;
   /** Optional URL to certificate, announcement, or reference material. */
   referenceLink?: string;
 };

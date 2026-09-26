@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import { CollapsibleList } from "@/components/collapsible-list";
 
 import { CERTIFICATIONS } from "../../data/certifications";
@@ -5,11 +7,13 @@ import { Panel, PanelHeader, PanelTitle } from "../panel";
 import { CertificationItem } from "./certification-item";
 
 export function Certifications() {
+  const t = useTranslations("certifications");
+
   return (
     <Panel id="certs">
       <PanelHeader>
         <PanelTitle>
-          Formations
+          {t("title")}
           <sup className="ml-1 font-mono text-sm font-medium text-muted-foreground select-none">
             ({CERTIFICATIONS.length})
           </sup>

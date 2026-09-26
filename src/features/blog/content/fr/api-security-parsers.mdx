@@ -1,0 +1,98 @@
+---
+title: "Sécurité API : Pourquoi ne jamais faire confiance aux inputs utilisateur"
+description: "Découvrez comment les parsers et validateurs protègent vos APIs contre les attaques malveillantes et la corruption de données avec un exemple pratique utilisant Zod."
+createdAt: "2025-10-15"
+updatedAt: "2025-10-15"
+tags: ["sécurité", "api", "validation", "nodejs", "backend"]
+author: "Moïse Bienvenu"
+readTime: "4 min"
+image: /images/blogs/APISecurity.png
+---
+
+## Introduction
+
+Chaque jour, d'innombrables APIs sont compromises par une simple erreur : **faire confiance aux inputs utilisateur**. Du JSON malformé aux attaques par injection, la surface de vulnérabilités est énorme quand nous supposons que les données entrantes sont sûres.
+
+<FramedImage
+  src="/images/blogs/APISecurity.png"
+  alt="Bouclier de sécurité API - Protection contre les inputs malveillants"
+/>
+
+## Le problème : les inputs utilisateur sont dangereux
+
+Quand les données viennent de l'extérieur de votre système, elles peuvent être malformées (JSON invalide, mauvais types), malveillantes (injection SQL, XSS) ou tout simplement inattendues (champs manquants, formats incorrects).
+
+```javascript
+// ❌ CODE VULNÉRABLE
+app.post("/api/users", (req, res) => {
+  const { name, age, email } = req.body;
+
+  // Aucune validation - catastrophe en attente
+  db.query(
+    `INSERT INTO users (name, age, email) VALUES ('${name}', ${age}, '${email}')`
+  );
+
+  res.json({ success: true });
+});
+```
+
+Un simple `name: "John', 'admin'); DROP TABLE users; --"` suffit à compromettre la base de données.
+
+## La solution : valider avec Zod
+
+**Parsing**, **validation** et **sanitization** sont trois choses différentes : convertir les données brutes, vérifier qu'elles respectent des règles, puis les nettoyer pour qu'elles soient sûres. [Zod](https://zod.dev/) fait les trois en une seule bibliothèque TypeScript-first.
+
+```javascript
+import { z } from "zod";
+
+const userSchema = z.object({
+  name: z.string().min(2).max(50),
+  age: z.number().min(0).max(120),
+  email: z.string().email(),
+});
+
+// ✅ CODE SÉCURISÉ
+app.post("/api/users", (req, res) => {
+  try {
+    const validatedData = userSchema.parse(req.body);
+
+    db.query("INSERT INTO users (name, age, email) VALUES (?, ?, ?)", [
+      validatedData.name,
+      validatedData.age,
+      validatedData.email,
+    ]);
+
+    res.json({ success: true, user: validatedData });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({ error: "Validation échouée" });
+    }
+    res.status(500).json({ error: "Erreur serveur interne" });
+  }
+});
+```
+
+Cette approche prévient en une fois l'injection SQL (grâce aux requêtes paramétrées), la confusion de types (Zod force les types attendus) et les dépassements de tampon (`.max()` limite la longueur des chaînes).
+
+## Bonnes pratiques
+
+- **Tout valider** : body, params, query, headers — pas seulement le body
+- **Ne jamais faire confiance au frontend** : la validation backend est non négociable, même si le frontend valide déjà
+- **Utiliser des requêtes paramétrées** : `db.query("... WHERE name = ?", [name])` plutôt que de la concaténation de chaînes
+- **Centraliser les schémas** dans un dossier dédié pour les réutiliser entre routes
+
+## 🔑 Points clés à retenir
+
+- **Ne jamais faire confiance aux inputs utilisateur** - toujours valider sur le backend
+- **Une bibliothèque de validation** comme Zod suffit à couvrir la plupart des cas
+- **Requêtes paramétrées** pour prévenir l'injection SQL
+- **Messages d'erreur clairs** pour aider au débogage
+
+## 📚 Pour aller plus loin
+
+- [Documentation Zod](https://zod.dev/)
+- [OWASP Input Validation](https://owasp.org/www-community/attacks/Input_Validation)
+
+---
+
+**Rappelez-vous** : en sécurité, la paranoïa est une fonctionnalité. Validez tout, ne faites confiance à rien.

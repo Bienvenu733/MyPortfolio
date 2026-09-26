@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import {
   Marquee,
   MarqueeContent,
@@ -10,12 +12,14 @@ import { Panel } from "../panel";
 import { TestimonialItem } from "./testimonial-item";
 
 export function TestimonialsMarquee() {
+  const t = useTranslations("testimonials");
+
   return (
     <Panel
       id="testimonials"
       className="before:z-11 after:z-10 [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
     >
-      <h2 className="sr-only">Testimonials</h2>
+      <h2 className="sr-only">{t("title")}</h2>
 
       <Marquee>
         <MarqueeFade side="left" />

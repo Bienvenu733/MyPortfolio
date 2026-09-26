@@ -1,5 +1,7 @@
+import type { LocalizedText } from "./i18n";
+
 export type Certification = {
-  title: string;
+  title: LocalizedText;
   issuer: string;
   /**
    * Issuer logo to display (takes precedence over `issuerIconName`).
@@ -26,5 +28,5 @@ export type Certification = {
 
   theme?: boolean;
 
-  description?: string;
+  description?: LocalizedText;
 };

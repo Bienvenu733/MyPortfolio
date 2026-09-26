@@ -11,7 +11,17 @@ export const metadata: Metadata = {
     "Explore my products and projects built with modern technologies.",
 };
 
-const products: any[] = [];
+type Product = {
+  id: string;
+  name: string;
+  description: string;
+  status: string;
+  tech: string[];
+  href: string;
+  image?: string;
+};
+
+const products: Product[] = [];
 
 export default function ProductsPage() {
   return (
@@ -88,9 +98,7 @@ export default function ProductsPage() {
         ) : (
           <div className="rounded-xl border bg-muted/30 p-16 text-center">
             <Package className="mx-auto mb-6 h-20 w-20 text-primary" />
-            <h3 className="mb-2 text-xl font-semibold">
-              No Products Yet
-            </h3>
+            <h3 className="mb-2 text-xl font-semibold">No Products Yet</h3>
             <p className="text-muted-foreground">
               Currently working on new products and solutions. Stay tuned for
               updates!

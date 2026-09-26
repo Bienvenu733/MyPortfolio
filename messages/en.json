@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "portfolio": "Portfolio",
+    "blog": "Blog"
+  },
+  "profile": {
+    "flagTooltip": "I'm from Burkina Faso (Land of Honest People)",
+    "verified": "Verified",
+    "flipSentences": [
+      "Fullstack Web Developer",
+      "Mobile App Developer",
+      "Desktop App Developer",
+      "Freelancer"
+    ]
+  },
+  "about": {
+    "title": "About",
+    "content": "\n- **Fullstack Developer** with **2+ years of experience**. Recognized for clean architecture and attention to detail.\n- Expertise in **Next.js**, **React**, **React Native**, **TypeScript**, **Node.js**, **Express.js**, **PostgreSQL**, **MongoDB**, **Tailwind CSS**, **Firebase**, **Expo**, **Zustand**, **Java**, **Spring Boot**, **Python**. I build web, mobile, and desktop applications.\n- **Passionate** about exploring new technologies and turning ideas into production-ready projects. Currently exploring **system design** with ambitions to specialize in **artificial intelligence** or **cybersecurity**.\n\n- **Mission**: Build software that delivers an exceptional user experience while staying on the cutting edge of technology.\n"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "A collection of articles about web development, emerging technologies, and programming best practices.",
+    "backToBlog": "Blog",
+    "previous": "Previous",
+    "next": "Next",
+    "pinned": "Pinned",
+    "new": "New",
+    "publishedOn": "Published on",
+    "viewMore": "View More..."
+  },
+  "share": {
+    "copyLink": "Copy link",
+    "copiedLink": "Copied link",
+    "shareOnX": "Share on X",
+    "shareOnLinkedIn": "Share on LinkedIn"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "french": "French",
+    "english": "English"
+  },
+  "experience": {
+    "title": "Experience",
+    "present": "Present"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "issuedBy": "Issued by",
+    "issuedOn": "Issued on",
+    "openCertificate": "Open certificate"
+  },
+  "projects": {
+    "title": "Projects",
+    "period": "Period",
+    "present": "Present",
+    "openProjectLink": "Open project link"
+  },
+  "testimonials": {
+    "title": "Testimonials"
+  },
+  "awards": {
+    "title": "Certificates & Badges",
+    "prize": "Prize",
+    "awardedIn": "Awarded in",
+    "receivedInGrade": "Context",
+    "openAttachment": "Open attachment"
+  }
+}

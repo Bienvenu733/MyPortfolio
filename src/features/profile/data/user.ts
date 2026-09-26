@@ -9,6 +9,9 @@ export const USER: User = {
   pronouns: "il/lui",
   bio: "Creating with code. Small details matter.",
   timeZone: "Africa/Ouagadougou",
+  // Canonical (French) copy used by non-localized, machine-facing routes
+  // (llms.txt, about.md, RSS, etc.). The localized UI reads its own copy
+  // from messages/{locale}.json instead.
   flipSentences: [
     "Développeur Fullstack Web",
     "Développeur d'applications mobiles",
@@ -20,7 +23,7 @@ export const USER: User = {
   secondPhoneNumber: "KzIyNiA2MCAwNyAxMCA3Ng==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   // base64-string-converter)
   email: "bW9pc2ViaWVudmVudTczM0BnbWFpbC5jb20=", // base64 encoded
-  website: "https://myportfolio-xi-wine.vercel.app/",
+  website: "https://bienvenuportfolio.vercel.app/",
   jobTitle: "Fullstack Developer",
   jobs: [
     {

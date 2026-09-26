@@ -3,7 +3,7 @@ import type { NavItem } from "@/types/nav";
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: process.env.APP_URL || "https://myportfolio-xi-wine.vercel.app/",
+  url: process.env.APP_URL || "https://bienvenuportfolio.vercel.app/",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -14,13 +14,15 @@ export const META_THEME_COLORS = {
   dark: "#09090b",
 };
 
+// `title` holds a next-intl message key (namespace "nav"), resolved by the
+// components that render this list (Nav, MobileNav) via useTranslations.
 export const MAIN_NAV: NavItem[] = [
   {
-    title: "Portfolio",
+    title: "nav.portfolio",
     href: "/",
   },
   {
-    title: "Blog",
+    title: "nav.blog",
     href: "/blog",
   },
   // {

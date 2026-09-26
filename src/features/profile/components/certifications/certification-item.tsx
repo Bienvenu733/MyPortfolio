@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 
 import { getIcon, Icons } from "@/components/icons";
@@ -26,6 +27,8 @@ export function CertificationItem({
   certification: Certification;
   theme?: boolean;
 }) {
+  const t = useTranslations("certifications");
+  const locale = useLocale();
   const canExpand = !!certification.description;
 
   return (
@@ -60,12 +63,12 @@ export function CertificationItem({
             <CollapsibleTrigger className="flex w-full items-center gap-4 p-4 pr-2 text-left select-none">
               <div className="flex-1">
                 <h3 className="mb-1 leading-snug font-medium text-balance">
-                  {certification.title}
+                  {certification.title[locale]}
                 </h3>
 
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
                   <dl>
-                    <dt className="sr-only">Issued by</dt>
+                    <dt className="sr-only">{t("issuedBy")}</dt>
                     <dd>
                       <span aria-hidden>@</span>
                       <span className="ml-0.5">{certification.issuer}</span>
@@ -78,7 +81,7 @@ export function CertificationItem({
                   />
 
                   <dl>
-                    <dt className="sr-only">Issued on</dt>
+                    <dt className="sr-only">{t("issuedOn")}</dt>
                     <dd>
                       <time
                         dateTime={dayjs(certification.issueDate).toISOString()}
@@ -91,7 +94,7 @@ export function CertificationItem({
               </div>
 
               {certification.credentialURL && (
-                <SimpleTooltip content="Open Certificate">
+                <SimpleTooltip content={t("openCertificate")}>
                   <a
                     className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
                     href={certification.credentialURL}
@@ -102,7 +105,7 @@ export function CertificationItem({
                       className="pointer-events-none size-4"
                       aria-hidden
                     />
-                    <span className="sr-only">Ouvrir</span>
+                    <span className="sr-only">{t("openCertificate")}</span>
                   </a>
                 </SimpleTooltip>
               )}
@@ -123,7 +126,7 @@ export function CertificationItem({
           <CollapsibleContent className="group overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
             <div className="border-t border-edge shadow-inner">
               <Prose className="p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
-                <Markdown>{certification.description}</Markdown>
+                <Markdown>{certification.description?.[locale]}</Markdown>
               </Prose>
             </div>
           </CollapsibleContent>

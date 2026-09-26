@@ -2,31 +2,74 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
-    id: "Portfolio1",
-    title: "Portfolio Personnel avec Django (Python)",
-    period: { start: "2025" },
-    link: "",
+    id: "nifu",
+    title: { fr: "NIFU", en: "NIFU" },
+    period: { start: "2026" },
+    link: "https://nifutech.vercel.app/",
     skills: [
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Bootstrap",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React Hook Form",
+      "Zod",
+      "Cloudflare Turnstile",
     ],
     isExpanded: true,
 
-    description: `Portfolio Personnel est une application web développée avec Django, permettant de présenter mes projets, compétences et expériences de manière professionnelle et interactive.  
-- **Présentation des projets** : Découvrez une sélection de mes réalisations avec leurs descriptions, technologies utilisées et aperçus visuels ;  
-- **Gestion de contenu dynamique** : Ajoutez et mettez à jour facilement les projets et informations via l’administration Django ;  
-- **Interface moderne et responsive** : Profitez d’un design adapté à tous les écrans pour une expérience utilisateur fluide ;  
-- **Navigation intuitive** : Accédez rapidement aux différentes sections (projets, compétences, contact) grâce à une structure claire ;  
-- **Mise en valeur du profil** : Présente efficacement mon parcours, mes compétences techniques et mon savoir-faire.`,
+    description: {
+      fr: `NIFU est le site vitrine de mon agence de services informatiques basée à Ouagadougou, dont je suis le **promoteur**.
+- **Présentation des services** : Catalogue détaillé des prestations de l'agence avec pages dédiées par service ;
+- **Vitrine des réalisations** : Mise en avant des projets menés par l'agence pour ses clients ;
+- **Formulaire de contact sécurisé** : Génération de leads avec protection anti-spam (Cloudflare Turnstile) et validation robuste (React Hook Form + Zod) ;
+- **Design soigné et animé** : Interface moderne avec animations fluides via Framer Motion ;
+- **Performance et SEO** : Architecture Next.js optimisée pour le référencement et la génération de leads.`,
+      en: `NIFU is the showcase website for my IT services agency based in Ouagadougou, which I **founded and lead**.
+- **Services showcase**: Detailed catalog of the agency's offerings with dedicated pages per service;
+- **Portfolio highlight**: Showcases projects delivered by the agency for its clients;
+- **Secure contact form**: Lead generation with anti-spam protection (Cloudflare Turnstile) and robust validation (React Hook Form + Zod);
+- **Polished, animated design**: Modern interface with smooth animations via Framer Motion;
+- **Performance and SEO**: Next.js architecture optimized for search visibility and lead generation.`,
+    },
+    logo: "",
+  },
+  {
+    id: "mets-locaux-bf",
+    title: { fr: "BFoods", en: "BFoods" },
+    period: { start: "2025" },
+    link: "https://bfoods.vercel.app/",
+    skills: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Drizzle ORM",
+      "PostgreSQL (Neon)",
+      "NextAuth",
+      "Vercel Blob",
+    ],
+    isExpanded: true,
+
+    description: {
+      fr: `BFoods est une plateforme full-stack dédiée à la valorisation de la richesse culinaire du Burkina Faso à travers ses 18 régions.
+- **Exploration par régions** : Parcourez les régions du Burkina Faso et découvrez leurs spécialités culinaires à travers une navigation simple et immersive ;
+- **Recettes détaillées** : Accédez aux ingrédients et aux étapes de préparation pour chaque plat, gérées dynamiquement via une base de données PostgreSQL ;
+- **Panneau d'administration** : Interface sécurisée (NextAuth) pour créer, modifier et publier des recettes, avec upload d'images via Vercel Blob ;
+- **Favoris et galerie** : Sauvegardez vos plats préférés et parcourez une galerie visuelle des mets traditionnels ;
+- **Notifications push** : Système de relance automatisé pour tenir les utilisateurs informés des nouvelles recettes ;
+- **Interface moderne et responsive** : Design fluide sur tous les appareils avec Next.js et Tailwind CSS.`,
+      en: `BFoods is a full-stack platform dedicated to showcasing the culinary richness of Burkina Faso across its 18 regions.
+- **Explore by region**: Browse the regions of Burkina Faso and discover their culinary specialties through simple, immersive navigation;
+- **Detailed recipes**: Access ingredients and preparation steps for each dish, managed dynamically through a PostgreSQL database;
+- **Admin panel**: Secure interface (NextAuth) to create, edit, and publish recipes, with image uploads via Vercel Blob;
+- **Favorites and gallery**: Save your favorite dishes and browse a visual gallery of traditional meals;
+- **Push notifications**: Automated nudge system to keep users informed about new recipes;
+- **Modern, responsive interface**: Smooth experience on every device with Next.js and Tailwind CSS.`,
+    },
     logo: "",
   },
   {
     id: "JavaApp2",
-    title: "G-Colis",
+    title: { fr: "G-Colis", en: "G-Colis" },
     period: { start: "2024" },
     link: "https://github.com/Bienvenu733/G-Colis.git",
     skills: [
@@ -39,17 +82,25 @@ export const PROJECTS: Project[] = [
     ],
     isExpanded: true,
 
-    description: `G-Colis est une application desktop dédiée au suivi et à la gestion des colis, permettant d’assurer une meilleure organisation et traçabilité des livraisons.  
-- **Suivi des colis** : Enregistrez et suivez l’état des colis en temps réel, de l’expédition à la livraison ;  
-- **Gestion des expéditions** : Ajoutez les informations des colis (expéditeur, destinataire, contenu, statut) et gérez efficacement les envois ;  
-- **Historique et traçabilité** : Consultez l’historique complet des mouvements pour chaque colis afin d’assurer un suivi fiable ;  
-- **Gestion des statuts** : Mettez à jour les étapes de livraison (en cours, expédié, livré, en attente) facilement ;  
-- **Interface intuitive** : Profitez d’une application simple et ergonomique pour une gestion rapide et efficace.`,
+    description: {
+      fr: `G-Colis est une application desktop dédiée au suivi et à la gestion des colis, permettant d'assurer une meilleure organisation et traçabilité des livraisons.
+- **Suivi des colis** : Enregistrez et suivez l'état des colis en temps réel, de l'expédition à la livraison ;
+- **Gestion des expéditions** : Ajoutez les informations des colis (expéditeur, destinataire, contenu, statut) et gérez efficacement les envois ;
+- **Historique et traçabilité** : Consultez l'historique complet des mouvements pour chaque colis afin d'assurer un suivi fiable ;
+- **Gestion des statuts** : Mettez à jour les étapes de livraison (en cours, expédié, livré, en attente) facilement ;
+- **Interface intuitive** : Profitez d'une application simple et ergonomique pour une gestion rapide et efficace.`,
+      en: `G-Colis is a desktop application dedicated to package tracking and management, ensuring better organization and traceability of deliveries.
+- **Package tracking**: Record and follow package status in real time, from shipping to delivery;
+- **Shipment management**: Add package details (sender, recipient, contents, status) and efficiently manage shipments;
+- **History and traceability**: View the full history of movements for each package for reliable tracking;
+- **Status management**: Easily update delivery stages (in progress, shipped, delivered, pending);
+- **Intuitive interface**: Enjoy a simple, ergonomic app for fast, efficient management.`,
+    },
     logo: "",
   },
   {
     id: "JavaApp1",
-    title: "BoulGest",
+    title: { fr: "BoulGest", en: "BoulGest" },
     period: { start: "2024" },
     link: "https://github.com/Bienvenu733/BoulGest.git",
     skills: [
@@ -61,33 +112,20 @@ export const PROJECTS: Project[] = [
     ],
     isExpanded: true,
 
-    description: `BoulGest est une application Desktop dédiée à la gestion complète d'une boulangerie, permettant d'optimiser les opérations quotidiennes et d'améliorer la productivité.  
+    description: {
+      fr: `BoulGest est une application Desktop dédiée à la gestion complète d'une boulangerie, permettant d'optimiser les opérations quotidiennes et d'améliorer la productivité.
 - **Gestion des produits** : Ajoutez, modifiez et suivez les pains, pâtisseries et autres produits avec leurs caractéristiques et prix ;
-- **Suivi des ventes** : Enregistrez les transactions quotidiennes et consultez l’historique des ventes en temps réel ;
+- **Suivi des ventes** : Enregistrez les transactions quotidiennes et consultez l'historique des ventes en temps réel ;
 - **Gestion des stocks** : Surveillez les matières premières et recevez des alertes en cas de rupture de stock ;
 - **Gestion des commandes** : Organisez et suivez les commandes clients pour une meilleure planification ;
-- **Interface intuitive** : Profitez d’une application simple, rapide et facile à utiliser pour une gestion efficace.`,
-    logo: "",
-  },
-  {
-    id: "mets-locaux-bf",
-    title: "BFoods",
-    period: { start: "2023" },
-    link: "https://mets-locaux-bf.onrender.com/",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Responsive Design",
-    ],
-    isExpanded: true,
-
-    description: `BFoods est une plateforme dédiée à la valorisation de la richesse culinaire du Burkina Faso à travers ses différentes régions.  
-- **Exploration par régions** : Parcourez les différentes régions du Burkina Faso et découvrez leurs spécialités culinaires à travers une navigation simple et immersive ;
-- **Découverte des mets locaux** : Chaque région présente une sélection de plats traditionnels avec de belles images mettant en valeur la culture et le terroir ;
-- **Recettes détaillées** : Accédez aux ingrédients et aux étapes de préparation pour chaque plat afin de mieux comprendre et reproduire les recettes ;
-- **Valorisation du patrimoine culinaire** : Le site met en lumière les traditions gastronomiques locales et contribue à leur préservation ;
-- **Interface intuitive et responsive** : Profitez d’une expérience fluide sur tous les appareils avec un design moderne et accessible.`,
+- **Interface intuitive** : Profitez d'une application simple, rapide et facile à utiliser pour une gestion efficace.`,
+      en: `BoulGest is a desktop application dedicated to the complete management of a bakery, helping to optimize daily operations and improve productivity.
+- **Product management**: Add, edit, and track breads, pastries, and other products with their characteristics and prices;
+- **Sales tracking**: Record daily transactions and view sales history in real time;
+- **Inventory management**: Monitor raw materials and receive alerts for stock shortages;
+- **Order management**: Organize and track customer orders for better planning;
+- **Intuitive interface**: Enjoy a simple, fast, and easy-to-use application for efficient management.`,
+    },
     logo: "",
   },
   /*{

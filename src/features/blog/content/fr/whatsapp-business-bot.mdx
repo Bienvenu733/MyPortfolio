@@ -1,0 +1,118 @@
+---
+title: "Construire un bot WhatsApp Business automatisé : du catalogue au paiement"
+description: "Retour d'expérience sur la conception d'un bot de commande WhatsApp complet avec l'API Cloud de WhatsApp Business, Node.js et des webhooks."
+createdAt: "2026-09-15"
+updatedAt: "2026-09-15"
+tags:
+  ["whatsapp-business-api", "nodejs", "webhooks", "automatisation", "backend"]
+author: "Moïse Bienvenu"
+readTime: "4 min"
+image: /images/blogs/WBA.png
+---
+
+## Introduction
+
+Automatiser un cycle de commande complet sur WhatsApp — du catalogue jusqu'au paiement — pose des défis différents d'une API REST classique : pas d'interface propre à concevoir, mais un flux conversationnel à modéliser, des webhooks à sécuriser, et des utilisateurs qui peuvent abandonner à n'importe quelle étape.
+
+Voici ce que j'ai retenu de la conception d'un tel bot avec l'API WhatsApp Business Cloud.
+
+<FramedImage
+  src="/images/blogs/WBA.png"
+  alt="API WhatsApp Business - Automatisation des conversations"
+/>
+
+## Le principe : tout passe par un webhook
+
+WhatsApp ne vous laisse pas "interroger" une conversation : c'est Meta qui vous notifie via un webhook à chaque message entrant. Votre serveur doit d'abord valider ce webhook, puis router les événements.
+
+```javascript
+// Vérification du webhook (obligatoire, une seule fois par Meta)
+app.get("/webhook", (req, res) => {
+  const token = req.query["hub.verify_token"];
+  if (token === process.env.WEBHOOK_VERIFY_TOKEN) {
+    return res.send(req.query["hub.challenge"]);
+  }
+  res.sendStatus(403);
+});
+
+// Réception des messages
+app.post("/webhook", (req, res) => {
+  const message = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+  if (message) handleIncomingMessage(message);
+  res.sendStatus(200); // Toujours répondre vite, WhatsApp retente sinon
+});
+```
+
+Le piège classique : traiter le message de façon synchrone dans le handler. Si votre logique métier prend plus de quelques secondes, répondez `200` immédiatement et traitez le message en tâche de fond.
+
+## Modéliser un flux conversationnel UX-first
+
+Sans interface graphique, chaque étape du parcours (catalogue → panier → paiement → suivi) doit être un message structuré : menus interactifs, boutons, listes.
+
+```javascript
+async function sendCatalogMenu(to) {
+  await sendMessage(to, {
+    type: "interactive",
+    interactive: {
+      type: "list",
+      body: { text: "Que souhaitez-vous commander ?" },
+      action: {
+        button: "Voir le catalogue",
+        sections: [
+          {
+            title: "Produits",
+            rows: catalog.map((item) => ({
+              id: item.id,
+              title: item.name,
+              description: `${item.price} FCFA`,
+            })),
+          },
+        ],
+      },
+    },
+  });
+}
+```
+
+Chaque réponse utilisateur (clic sur un item de liste, un bouton) revient sous forme de `interactive.list_reply` ou `button_reply` dans le webhook suivant — c'est cette boucle message → réponse → message qui constitue tout le bot.
+
+## Gérer les abandons et les erreurs
+
+Contrairement à un formulaire web, un utilisateur peut disparaître à n'importe quelle étape et revenir des heures plus tard. Le bot doit donc être **stateless côté conversation** : l'état de la commande vit en base, pas en mémoire.
+
+```javascript
+const session = await OrderSession.findOrCreate({ phoneNumber });
+
+switch (session.step) {
+  case "catalog":
+    return sendCatalogMenu(phoneNumber);
+  case "cart":
+    return sendCartSummary(phoneNumber, session.cart);
+  case "payment":
+    return sendPaymentOptions(phoneNumber);
+}
+```
+
+Ça permet de reprendre exactement là où l'utilisateur s'est arrêté, même après plusieurs jours.
+
+## Sécurité et conformité
+
+- **Validation de la signature Meta** sur chaque requête webhook (`x-hub-signature-256`) pour éviter les faux appels
+- **Chiffrement des données sensibles** (numéros, informations de paiement) en base
+- **Consentement explicite** avant tout message hors fenêtre de 24h — WhatsApp impose l'usage de templates pré-validés par Meta dans ce cas
+
+## 🔑 Points clés à retenir
+
+- **Le webhook doit répondre vite** - traitez la logique lourde en tâche de fond
+- **L'état de la conversation vit en base**, jamais en mémoire du serveur
+- **Chaque étape est un message structuré** (liste, bouton) plutôt qu'un texte libre à parser
+- **La conformité RGPD et les templates Meta** ne sont pas optionnels pour un bot en production
+
+## 📚 Pour aller plus loin
+
+- [WhatsApp Business Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api)
+- [Guide des messages interactifs](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/interactive-messages)
+
+---
+
+**Retour d'expérience** : le plus gros travail n'est pas l'intégration technique de l'API, mais la modélisation du flux conversationnel — anticiper tous les chemins qu'un utilisateur peut emprunter avant même d'écrire la première ligne de code.

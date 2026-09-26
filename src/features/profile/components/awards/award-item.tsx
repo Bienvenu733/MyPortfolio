@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { FileCheckIcon } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Icons } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
@@ -22,6 +23,8 @@ export function AwardItem({
   className?: string;
   award: Award;
 }) {
+  const t = useTranslations("awards");
+  const locale = useLocale();
   const canExpand = !!award.description;
 
   return (
@@ -39,13 +42,13 @@ export function AwardItem({
             <CollapsibleTrigger className="flex w-full items-center gap-4 p-4 pr-2 text-left select-none">
               <div className="flex-1">
                 <h3 className="mb-1 leading-snug font-medium text-balance">
-                  {award.title}
+                  {award.title[locale]}
                 </h3>
 
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
                   <dl>
-                    <dt className="sr-only">Prize</dt>
-                    <dd>{award.prize}</dd>
+                    <dt className="sr-only">{t("prize")}</dt>
+                    <dd>{award.prize[locale]}</dd>
                   </dl>
 
                   <Separator
@@ -54,7 +57,7 @@ export function AwardItem({
                   />
 
                   <dl>
-                    <dt className="sr-only">Awarded in</dt>
+                    <dt className="sr-only">{t("awardedIn")}</dt>
                     <dd>
                       <time dateTime={dayjs(award.date).toISOString()}>
                         {dayjs(award.date).format("MM.YYYY")}
@@ -68,14 +71,14 @@ export function AwardItem({
                   />
 
                   <dl>
-                    <dt className="sr-only">Received in Grade</dt>
+                    <dt className="sr-only">{t("receivedInGrade")}</dt>
                     <dd>{award.grade}</dd>
                   </dl>
                 </div>
               </div>
 
               {award.referenceLink && (
-                <SimpleTooltip content="Ouvrir la pièce jointe">
+                <SimpleTooltip content={t("openAttachment")}>
                   <a
                     className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
                     href={award.referenceLink}
@@ -86,7 +89,7 @@ export function AwardItem({
                       className="pointer-events-none size-4"
                       aria-hidden
                     />
-                    <span className="sr-only">Ouvrir la pièce jointe</span>
+                    <span className="sr-only">{t("openAttachment")}</span>
                   </a>
                 </SimpleTooltip>
               )}
@@ -107,7 +110,7 @@ export function AwardItem({
           <CollapsibleContent className="group overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
             <div className="border-t border-edge shadow-inner">
               <Prose className="p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
-                <Markdown>{award.description}</Markdown>
+                <Markdown>{award.description?.[locale]}</Markdown>
               </Prose>
             </div>
           </CollapsibleContent>

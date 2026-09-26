@@ -1,4 +1,5 @@
 import { InfinityIcon } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 
 import { Markdown } from "@/components/markdown";
@@ -21,6 +22,8 @@ export function ExperiencePositionItem({
 }: {
   position: ExperiencePosition;
 }) {
+  const t = useTranslations("experience");
+  const locale = useLocale();
   const { start, end } = position.employmentPeriod;
   const isOngoing = !end;
 
@@ -46,7 +49,7 @@ export function ExperiencePositionItem({
             </div>
 
             <h4 className="flex-1 font-medium text-balance">
-              {position.title}
+              {position.title[locale]}
             </h4>
 
             <div
@@ -62,7 +65,7 @@ export function ExperiencePositionItem({
               <>
                 <dl>
                   <dt className="sr-only">Employment Type</dt>
-                  <dd>{position.employmentType}</dd>
+                  <dd>{position.employmentType[locale]}</dd>
                 </dl>
 
                 <Separator
@@ -83,7 +86,7 @@ export function ExperiencePositionItem({
                       className="size-4.5 translate-y-[0.5px]"
                       aria-hidden
                     />
-                    <span className="sr-only">Present</span>
+                    <span className="sr-only">{t("present")}</span>
                   </>
                 ) : (
                   <span>{end}</span>
@@ -96,7 +99,7 @@ export function ExperiencePositionItem({
         <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-fade-up data-[state=open]:animate-collapsible-fade-down">
           {position.description && (
             <Prose className="pt-2 pl-9">
-              <Markdown>{position.description}</Markdown>
+              <Markdown>{position.description[locale]}</Markdown>
             </Prose>
           )}
 

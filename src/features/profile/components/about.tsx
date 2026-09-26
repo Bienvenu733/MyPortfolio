@@ -1,19 +1,22 @@
+import { useTranslations } from "next-intl";
+
 import { Markdown } from "@/components/markdown";
 import { Prose } from "@/components/ui/typography";
-import { USER } from "@/features/profile/data/user";
 
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
 
 export function About() {
+  const t = useTranslations("about");
+
   return (
     <Panel id="about">
       <PanelHeader>
-        <PanelTitle>A Propos</PanelTitle>
+        <PanelTitle>{t("title")}</PanelTitle>
       </PanelHeader>
 
       <PanelContent>
         <Prose>
-          <Markdown>{USER.about}</Markdown>
+          <Markdown>{t("content")}</Markdown>
         </Prose>
       </PanelContent>
     </Panel>

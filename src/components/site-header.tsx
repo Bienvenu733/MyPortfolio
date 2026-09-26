@@ -1,12 +1,14 @@
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import { getLocale } from "next-intl/server";
 
 import { DesktopNav } from "@/components/desktop-nav";
 import { NavItemGitHub } from "@/components/nav-item-github";
 import { MAIN_NAV } from "@/config/site";
 import { getAllPosts } from "@/features/blog/data/posts";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
+import { LanguageSwitcher } from "./language-switcher";
 import { SiteHeaderMark } from "./site-header-mark";
 import { SiteHeaderWrapper } from "./site-header-wrapper";
 import { ToggleTheme } from "./toggle-theme";
@@ -23,8 +25,9 @@ const MobileNav = dynamic(() =>
   import("@/components/mobile-nav").then((mod) => mod.MobileNav)
 );
 
-export function SiteHeader() {
-  const posts = getAllPosts();
+export async function SiteHeader() {
+  const locale = await getLocale();
+  const posts = getAllPosts(locale);
 
   return (
     <SiteHeaderWrapper
@@ -59,6 +62,7 @@ export function SiteHeader() {
 
           <span className="mx-2 flex h-4 w-px bg-border" />
 
+          <LanguageSwitcher />
           <ToggleTheme />
           <MobileNav className="sm:hidden" items={MAIN_NAV} />
         </div>

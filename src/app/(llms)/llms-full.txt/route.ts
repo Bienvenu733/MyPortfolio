@@ -11,7 +11,7 @@ import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
 import { TECH_STACK } from "@/features/profile/data/tech-stack";
 import { USER } from "@/features/profile/data/user";
 
-const allPosts = getAllPosts();
+const allPosts = getAllPosts("en");
 
 const aboutText = `## About
 
@@ -39,7 +39,7 @@ ${EXPERIENCES.map((item) =>
   item.positions
     .map((position) => {
       const skills = position.skills?.map((skill) => skill).join(", ") || "N/A";
-      return `### ${position.title} | ${item.companyName}\n\nDuration: ${position.employmentPeriod.start} - ${position.employmentPeriod.end || "Present"}\n\nSkills: ${skills}\n\n${position.description?.trim()}`;
+      return `### ${position.title.en} | ${item.companyName}\n\nDuration: ${position.employmentPeriod.start} - ${position.employmentPeriod.end || "Present"}\n\nSkills: ${skills}\n\n${position.description?.en.trim()}`;
     })
     .join("\n\n")
 ).join("\n\n")}
@@ -49,19 +49,21 @@ const projectsText = `## Projects
 
 ${PROJECTS.map((item) => {
   const skills = `\n\nSkills: ${item.skills.join(", ")}`;
-  const description = item.description ? `\n\n${item.description.trim()}` : "";
-  return `### ${item.title}\n\nProject URL: ${item.link}${skills}${description}`;
+  const description = item.description
+    ? `\n\n${item.description.en.trim()}`
+    : "";
+  return `### ${item.title.en}\n\nProject URL: ${item.link}${skills}${description}`;
 }).join("\n\n")}
 `;
 
 const awardsText = `## Awards
 
-${AWARDS.map((item) => `### ${item.prize} | ${item.title}\n\n${item.description}`).join("\n\n")}
+${AWARDS.map((item) => `### ${item.prize.en} | ${item.title.en}\n\n${item.description?.en ?? ""}`).join("\n\n")}
 `;
 
 const certificationsText = `## Certifications
 
-${CERTIFICATIONS.map((item) => `- [${item.title}](${item.credentialURL})`).join("\n")}`;
+${CERTIFICATIONS.map((item) => `- [${item.title.en}](${item.credentialURL})`).join("\n")}`;
 
 async function getBlogContent() {
   const text = await Promise.all(

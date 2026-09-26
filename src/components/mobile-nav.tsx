@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/types/nav";
 
@@ -19,6 +20,8 @@ export function MobileNav({
   items: NavItem[];
   className?: string;
 }) {
+  const t = useTranslations();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -39,7 +42,7 @@ export function MobileNav({
       <DropdownMenuContent className="w-64" align="end" sideOffset={8}>
         {items.map((link) => (
           <DropdownMenuItem key={link.href} asChild>
-            <Link href={link.href}>{link.title}</Link>
+            <Link href={link.href}>{t(link.title)}</Link>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

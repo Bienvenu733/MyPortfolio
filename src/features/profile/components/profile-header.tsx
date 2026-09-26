@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import { SimpleTooltip } from "@/components/ui/tooltip";
 import { USER } from "@/features/profile/data/user";
 import { cn } from "@/lib/utils";
@@ -7,6 +9,9 @@ import { PronounceMyName } from "./pronounce-my-name";
 import { VerifiedIcon } from "./verified-icon";
 
 export function ProfileHeader() {
+  const t = useTranslations("profile");
+  const flipSentences = t.raw("flipSentences") as string[];
+
   return (
     <div className="screen-line-after flex border-x border-edge">
       <div className="shrink-0 border-r border-edge">
@@ -20,42 +25,42 @@ export function ProfileHeader() {
           />
         </div>
 
-        <SimpleTooltip content="Je viens du Burkina Faso (Pays des hommes intègres)">
-        {/* Flag of Burkina Faso */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-0 -left-px h-8 sm:h-9"
-          shapeRendering="geometricPrecision"
-          textRendering="geometricPrecision"
-          imageRendering="optimizeQuality"
-          fillRule="evenodd"
-          clipRule="evenodd"
-          viewBox="0 0 513 357.071"
-        >
-          {/* Top half - Red */}
-          <rect width="513" height="178.535" fill="#EF2B2D" />
+        <SimpleTooltip content={t("flagTooltip")}>
+          {/* Flag of Burkina Faso */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute top-0 -left-px h-8 sm:h-9"
+            shapeRendering="geometricPrecision"
+            textRendering="geometricPrecision"
+            imageRendering="optimizeQuality"
+            fillRule="evenodd"
+            clipRule="evenodd"
+            viewBox="0 0 513 357.071"
+          >
+            {/* Top half - Red */}
+            <rect width="513" height="178.535" fill="#EF2B2D" />
 
-          {/* Bottom half - Green */}
-          <rect y="178.535" width="513" height="178.536" fill="#009A00" />
+            {/* Bottom half - Green */}
+            <rect y="178.535" width="513" height="178.536" fill="#009A00" />
 
-          {/* Yellow star in the center */}
-          <polygon
-            fill="#FCD116"
-            points="256.5,120 270.5,160 313,160 279,184 292,224 256.5,200 221,224 234,184 200,160 242.5,160"
-          />
+            {/* Yellow star in the center */}
+            <polygon
+              fill="#FCD116"
+              points="256.5,120 270.5,160 313,160 279,184 292,224 256.5,200 221,224 234,184 200,160 242.5,160"
+            />
 
-          <rect
-            fill="none"
-            stroke="#CCC"
-            strokeWidth=".64"
-            strokeMiterlimit="22.926"
-            x=".32"
-            y=".319"
-            width="512.359"
-            height="356.43"
-          />
-        </svg>
-      </SimpleTooltip>
+            <rect
+              fill="none"
+              stroke="#CCC"
+              strokeWidth=".64"
+              strokeMiterlimit="22.926"
+              x=".32"
+              y=".319"
+              width="512.359"
+              height="356.43"
+            />
+          </svg>
+        </SimpleTooltip>
       </div>
 
       <div className="flex flex-1 flex-col">
@@ -77,7 +82,7 @@ export function ProfileHeader() {
           <h1 className="flex items-center pl-4 text-3xl font-semibold">
             {USER.displayName}
             &nbsp;
-            <SimpleTooltip content="Verified">
+            <SimpleTooltip content={t("verified")}>
               <VerifiedIcon className="size-[0.6em] translate-y-px text-info select-none" />
             </SimpleTooltip>
             {USER.namePronunciationUrl && (
@@ -92,7 +97,7 @@ export function ProfileHeader() {
           </h1>
 
           <div className="h-12 border-t border-edge py-1 pl-4 sm:h-auto">
-            <FlipSentences sentences={USER.flipSentences} />
+            <FlipSentences sentences={flipSentences} />
           </div>
         </div>
       </div>

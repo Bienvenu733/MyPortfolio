@@ -1,26 +1,32 @@
 import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { PostItem } from "@/features/blog/components/post-item";
 import { getAllPosts } from "@/features/blog/data/posts";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Une collection des articles sur le développement web, les technologies émergentes, et les meilleures pratiques en programmation.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("blog");
 
-export default function Page() {
-  const allPosts = getAllPosts();
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
+export default async function Page() {
+  const t = await getTranslations("blog");
+  const locale = await getLocale();
+  const allPosts = getAllPosts(locale);
 
   return (
     <>
       <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Blog</h1>
+        <h1 className="text-3xl font-semibold">{t("title")}</h1>
       </div>
 
       <div className="screen-line-after p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
-          {metadata.description}
+          {t("description")}
         </p>
       </div>
 

@@ -1,3 +1,5 @@
+import { useLocale } from "next-intl";
+
 import {
   Testimonial,
   TestimonialAuthor,
@@ -20,6 +22,8 @@ export function TestimonialItem({
   quote,
   theme,
 }: TestimonialType) {
+  const locale = useLocale();
+
   return (
     <div className="block h-full transition-colors hover:bg-accent2">
       <Testimonial>
@@ -42,7 +46,7 @@ export function TestimonialItem({
             <TestimonialVerifiedBadge />
           </TestimonialAuthorName>
 
-          <TestimonialAuthorBio>{authorBio}</TestimonialAuthorBio>
+          <TestimonialAuthorBio>{authorBio[locale]}</TestimonialAuthorBio>
         </TestimonialAuthor>
       </Testimonial>
     </div>

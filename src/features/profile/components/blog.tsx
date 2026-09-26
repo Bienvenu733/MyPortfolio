@@ -1,20 +1,23 @@
 import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
 import { PostItem } from "@/features/blog/components/post-item";
 import { getAllPosts } from "@/features/blog/data/posts";
+import { Link } from "@/i18n/navigation";
 
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 
-export function Blog() {
-  const allPosts = getAllPosts();
+export async function Blog() {
+  const t = await getTranslations("blog");
+  const locale = await getLocale();
+  const allPosts = getAllPosts(locale);
 
   return (
     <Panel id="blog">
       <PanelHeader>
-        <PanelTitle>Blog</PanelTitle>
+        <PanelTitle>{t("title")}</PanelTitle>
       </PanelHeader>
 
       <div className="relative py-4">
@@ -33,7 +36,7 @@ export function Blog() {
       <div className="screen-line-before flex justify-center py-2">
         <Button variant="default" asChild>
           <Link href="/blog">
-            Voir Plus...
+            {t("viewMore")}
             <ArrowRightIcon />
           </Link>
         </Button>

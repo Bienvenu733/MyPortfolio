@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React from "react";
 
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/types/nav";
 
@@ -13,6 +14,8 @@ export function Nav({
   activeId?: string;
   className?: string;
 }) {
+  const t = useTranslations();
+
   return (
     <nav
       data-active-id={activeId}
@@ -27,7 +30,7 @@ export function Nav({
 
         return (
           <NavItem key={href} href={href} active={active}>
-            {title}
+            {t(title)}
           </NavItem>
         );
       })}

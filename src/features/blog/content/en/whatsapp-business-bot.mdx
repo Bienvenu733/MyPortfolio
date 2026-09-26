@@ -1,0 +1,117 @@
+---
+title: "Building an Automated WhatsApp Business Bot: From Catalog to Payment"
+description: "Lessons learned designing a complete WhatsApp order bot with the WhatsApp Business Cloud API, Node.js, and webhooks."
+createdAt: "2026-09-15"
+updatedAt: "2026-09-15"
+tags: ["whatsapp-business-api", "nodejs", "webhooks", "automation", "backend"]
+author: "Moïse Bienvenu"
+readTime: "4 min"
+image: /images/blogs/WBA.png
+---
+
+## Introduction
+
+Automating a full order cycle on WhatsApp — from catalog browsing to payment — raises different challenges than a typical REST API: there's no UI to design, but a conversational flow to model, webhooks to secure, and users who can drop off at any step.
+
+Here's what I learned building such a bot with the WhatsApp Business Cloud API.
+
+<FramedImage
+  src="/images/blogs/WBA.png"
+  alt="WhatsApp Business API - Automating conversations"
+/>
+
+## The core idea: everything goes through a webhook
+
+WhatsApp doesn't let you "poll" a conversation: Meta notifies you via a webhook on every incoming message. Your server first has to validate that webhook, then route the events.
+
+```javascript
+// Webhook verification (required once, by Meta)
+app.get("/webhook", (req, res) => {
+  const token = req.query["hub.verify_token"];
+  if (token === process.env.WEBHOOK_VERIFY_TOKEN) {
+    return res.send(req.query["hub.challenge"]);
+  }
+  res.sendStatus(403);
+});
+
+// Receiving messages
+app.post("/webhook", (req, res) => {
+  const message = req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+  if (message) handleIncomingMessage(message);
+  res.sendStatus(200); // Always respond fast, WhatsApp retries otherwise
+});
+```
+
+The classic pitfall: processing the message synchronously inside the handler. If your business logic takes more than a couple of seconds, respond `200` immediately and process the message in the background.
+
+## Modeling a UX-first conversational flow
+
+With no graphical interface, every step of the journey (catalog → cart → payment → tracking) has to be a structured message: interactive menus, buttons, lists.
+
+```javascript
+async function sendCatalogMenu(to) {
+  await sendMessage(to, {
+    type: "interactive",
+    interactive: {
+      type: "list",
+      body: { text: "What would you like to order?" },
+      action: {
+        button: "View catalog",
+        sections: [
+          {
+            title: "Products",
+            rows: catalog.map((item) => ({
+              id: item.id,
+              title: item.name,
+              description: `$${item.price}`,
+            })),
+          },
+        ],
+      },
+    },
+  });
+}
+```
+
+Every user response (tapping a list item, a button) comes back as an `interactive.list_reply` or `button_reply` in the next webhook call — that message → response → message loop is the entire bot.
+
+## Handling drop-offs and errors
+
+Unlike a web form, a user can disappear at any step and come back hours later. The bot therefore needs to be **stateless on the conversation side**: order state lives in the database, not in memory.
+
+```javascript
+const session = await OrderSession.findOrCreate({ phoneNumber });
+
+switch (session.step) {
+  case "catalog":
+    return sendCatalogMenu(phoneNumber);
+  case "cart":
+    return sendCartSummary(phoneNumber, session.cart);
+  case "payment":
+    return sendPaymentOptions(phoneNumber);
+}
+```
+
+This lets users resume exactly where they left off, even days later.
+
+## Security and compliance
+
+- **Validate Meta's signature** on every webhook request (`x-hub-signature-256`) to reject spoofed calls
+- **Encrypt sensitive data** (phone numbers, payment info) at rest
+- **Explicit consent** before any message sent outside the 24-hour window — WhatsApp requires pre-approved Meta templates in that case
+
+## 🔑 Key takeaways
+
+- **The webhook must respond fast** - handle heavy logic in the background
+- **Conversation state lives in the database**, never in server memory
+- **Each step is a structured message** (list, button) rather than free text to parse
+- **GDPR compliance and Meta templates** aren't optional for a production bot
+
+## 📚 Going further
+
+- [WhatsApp Business Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api)
+- [Interactive messages guide](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/interactive-messages)
+
+---
+
+**Lesson learned**: the hardest part isn't the technical API integration—it's modeling the conversational flow, anticipating every path a user can take before writing a single line of code.

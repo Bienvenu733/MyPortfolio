@@ -1,6 +1,7 @@
 "use client";
 
 import { LinkIcon, ShareIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { Button } from "@/components//ui/button";
@@ -14,6 +15,8 @@ import {
 import { copyText } from "@/utils/copy";
 
 export function PostShareMenu({ url }: { url: string }) {
+  const t = useTranslations("share");
+
   const absoluteUrl = url.startsWith("http")
     ? url
     : typeof window !== "undefined"
@@ -41,11 +44,11 @@ export function PostShareMenu({ url }: { url: string }) {
         <DropdownMenuItem
           onClick={() => {
             copyText(absoluteUrl);
-            toast.success("Copied link");
+            toast.success(t("copiedLink"));
           }}
         >
           <LinkIcon />
-          Copy link
+          {t("copyLink")}
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
@@ -55,7 +58,7 @@ export function PostShareMenu({ url }: { url: string }) {
             rel="noopener"
           >
             <Icons.x />
-            Share on X
+            {t("shareOnX")}
           </a>
         </DropdownMenuItem>
 
@@ -66,7 +69,7 @@ export function PostShareMenu({ url }: { url: string }) {
             rel="noopener"
           >
             <Icons.linkedin />
-            Share on LinkedIn
+            {t("shareOnLinkedIn")}
           </a>
         </DropdownMenuItem>
       </DropdownMenuContent>

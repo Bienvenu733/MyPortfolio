@@ -1,0 +1,107 @@
+---
+title: "ESLint & Prettier: Their Real Impact on Professional Teams"
+description: "Beyond installation - discover how ESLint and Prettier actually boost productivity and build maintainable codebases."
+createdAt: "2025-12-10"
+updatedAt: "2025-12-10"
+tags: ["tooling", "productivity", "code-quality", "team-workflow", "javascript"]
+author: "Moïse Bienvenu"
+readTime: "4 min"
+image: /images/blogs/ESLint_Prettier.png
+---
+
+## Introduction
+
+Every developer has been there: joining a project where the code style is inconsistent, bugs slip in because of simple mistakes, and code reviews turn into formatting debates. This isn't just annoying—it's costly.
+
+<FramedImage
+  src="/images/blogs/ESLint_Prettier.png"
+  alt="ESLint and Prettier logos representing code quality and formatting"
+/>
+
+## Two tools, two jobs
+
+**ESLint** finds **problems** in your code (potential bugs, anti-patterns, code smells). **Prettier** handles **style** consistently (indentation, quotes, spacing).
+
+```javascript
+// ESLint catches real bugs:
+if ((user.isAdmin = true)) {
+  // ❌ Assignment instead of comparison
+  deleteUser();
+}
+
+// Prettier fixes inconsistent formatting:
+const obj = { name: "John", age: 25 }; // ❌ Messy
+const obj = { name: "John", age: 25 }; // ✅ Prettier
+```
+
+Without these tools, a PR's git diff is often 90% formatting and 10% logic, and reviews turn into style debates ("add a semicolon", "use single quotes") instead of focusing on business logic.
+
+## A minimal setup that works
+
+```json
+// .eslintrc.json
+{
+  "extends": [
+    "eslint:recommended",
+    "@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-console": "warn",
+    "prefer-const": "error"
+  }
+}
+```
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 80
+}
+```
+
+The key part: `"extends": ["prettier"]` disables ESLint's formatting rules to avoid conflicts. Each tool stays in its lane.
+
+## Automate with pre-commit hooks
+
+```bash
+npm install --save-dev husky lint-staged
+npx husky install
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+
+```json
+// package.json
+{
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": ["eslint --fix", "prettier --write"]
+  }
+}
+```
+
+This way, no badly formatted code or obvious errors ever reach the repository — the team doesn't have to think about it anymore.
+
+## Common pitfalls
+
+- **Too many rules**: start with 5-6 essential rules (`no-unused-vars`, `no-console`, `prefer-const`...) and expand gradually instead of importing a 50-rule preset
+- **ESLint/Prettier conflicts**: always disable ESLint's formatting rules via `eslint-config-prettier`
+- **Ignoring the wrong files**: exclude `node_modules/` and `dist/`, but never `src/` or `tests/`
+
+## 🔑 Key takeaways
+
+- **ESLint finds bugs**, Prettier handles formatting - they complement each other
+- **Automating** with pre-commit hooks removes the need to think about it
+- **Start small** with essential rules, expand gradually
+- **Let Prettier handle style**, ESLint focuses on quality
+
+## 📚 Going further
+
+- [ESLint Handbook](https://eslint.org/docs/latest/use/getting-started)
+- [Husky Git Hooks](https://typicode.github.io/husky/)
+
+---
+
+**Remember**: these tools aren't meant to restrict creativity—they're meant to eliminate the boring stuff so you can focus on writing good code.
