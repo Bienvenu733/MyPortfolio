@@ -2,6 +2,74 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "helpdesk-it",
+    title: { fr: "HelpDesk IT", en: "HelpDesk IT" },
+    period: { start: "11.2026" },
+    link: "https://github.com/Bienvenu733/helpdesk-it",
+    skills: [
+      "Django REST",
+      "Spring Boot",
+      "Next.js",
+      "PostgreSQL",
+      "Oracle",
+      "PL/SQL",
+      "JWT",
+      "Docker",
+      "GitHub Actions",
+    ],
+    isExpanded: true,
+
+    description: {
+      fr: `HelpDesk IT est une plateforme de gestion des incidents informatiques reposant sur deux services indépendants qui communiquent par une API REST sécurisée.
+- **Tickets et rôles** : Espaces dédiés pour l'utilisateur, le technicien et l'administrateur (Django REST, JWT, PostgreSQL), avec répartition automatique des tickets et notifications ;
+- **Suivi des SLA** : Service Spring Boot adossé à Oracle qui calcule l'échéance selon la priorité, détecte les retards et tient une piste d'audit, avec un taux de respect calculé par une fonction PL/SQL ;
+- **Tableau de bord** : Indicateurs, activité, répartition des pannes et équipe technique, avec mode sombre et interface adaptée au mobile (Next.js) ;
+- **Qualité et CI/CD** : Plus de 140 tests, un test de bout en bout sur toute la pile et publication automatique des images Docker via GitHub Actions ;
+- **Déploiement simple** : Toute la pile (5 conteneurs) démarre avec \`docker compose up\`.`,
+      en: `HelpDesk IT is an IT incident management platform built on two independent services that communicate through a secured REST API.
+- **Tickets and roles**: Dedicated spaces for users, technicians and administrators (Django REST, JWT, PostgreSQL), with automatic ticket assignment and notifications;
+- **SLA tracking**: Spring Boot service backed by Oracle that computes the deadline by priority, detects overdue tickets and keeps an audit trail, with the compliance rate computed by a PL/SQL function;
+- **Dashboard**: Indicators, activity, breakdown of incident types and technical team, with dark mode and a mobile-friendly interface (Next.js);
+- **Quality and CI/CD**: Over 140 tests, an end-to-end test across the whole stack and automatic Docker image publishing through GitHub Actions;
+- **Simple deployment**: The full stack (5 containers) starts with \`docker compose up\`.`,
+    },
+    logo: "",
+  },
+  {
+    id: "padloop",
+    title: { fr: "PadLoop", en: "PadLoop" },
+    period: { start: "09.2026" },
+    link: "https://github.com/Bienvenu733/PadLoop",
+    skills: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "react-native-audio-api",
+      "Zustand",
+      "Reanimated",
+      "Jest",
+    ],
+    isExpanded: true,
+
+    description: {
+      fr: `PadLoop est une application mobile de pads (nappes harmoniques par tonalité) et de loops rythmiques, pensée pour accompagner une performance musicale en direct.
+- **Pads et loops** : Lecture de nappes longues par tonalité et de loops par style/tempo, avec crossfade et calage sur la mesure ;
+- **Mixage en direct** : Volume et mute indépendants par bus, réglage fin du tempo, changement de tonalité ou de style sans couper le son ;
+- **Sessions** : Regroupez les morceaux d'un événement, gérez favoris et duplication, et relancez un morceau d'un appui ;
+- **Robustesse sur scène** : Lecture en arrière-plan, gestion des interruptions système (appel entrant, perte d'Audio Focus) et des erreurs audio, mode concentration (écran allumé, « Ne pas déranger ») ;
+- **Confort d'usage** : Métronome autonome, thème clair/sombre, français/anglais et mode paysage pour tablette ;
+- **Moteur audio testé** : Suite unitaire Jest sur le moteur audio, sans appareil.`,
+      en: `PadLoop is a mobile app of pads (harmonic pads by key) and rhythmic loops, designed to support live musical performance.
+- **Pads and loops**: Playback of long pads by key and loops by style/tempo, with crossfade and bar-aligned sync;
+- **Live mixing**: Independent volume and mute per bus, fine tempo control, key or style changes without cutting the sound;
+- **Sessions**: Group an event's songs, manage favorites and duplication, and relaunch a song with one tap;
+- **Stage-ready robustness**: Background playback, handling of system interruptions (incoming call, Audio Focus loss) and audio errors, focus mode (screen kept on, Do Not Disturb);
+- **Everyday comfort**: Standalone metronome, light/dark theme, French/English and landscape mode for tablets;
+- **Tested audio engine**: Jest unit test suite for the audio engine, with no device needed.`,
+    },
+    logo: "",
+  },
+  {
     id: "nifu",
     title: { fr: "NIFU", en: "NIFU" },
     period: { start: "2026" },
